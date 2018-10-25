@@ -402,14 +402,14 @@ welcome screen.</p>
 
 <p>First, install Elm if you haven’t already:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install elm <span class="nt">--global</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>elm <span class="nt">--global</span>
 </code></pre></div></div>
 
 <p>Next, in order to help us generate an Elm app with a default structure and
 sensible configuration, we’ll use <a href="https://github.com/halfzebra/create-elm-app">Create Elm App</a> (inspired by
 <a href="https://github.com/facebook/create-react-app">Create React App</a>):</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install create-elm-app <span class="nt">--global</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>create-elm-app <span class="nt">--global</span>
 </code></pre></div></div>
 
 <p>Generate the new Elm app inside the “front end” of the Phoenix application,
@@ -444,7 +444,7 @@ let’s write some config.</p>
 <p>In order to get webpack to track our new Elm dependencies, we will need the
 <a href="https://github.com/elm-community/elm-webpack-loader">Elm loader</a> plugin. So, navigate to the <code class="highlighter-rouge">assets/</code> folder and install it:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install elm-webpack-loader
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>elm-webpack-loader
 </code></pre></div></div>
 
 <p>Now, open up <code class="highlighter-rouge">webpack.config.js</code> in a text editor and add the configuration rule
@@ -523,7 +523,7 @@ Phoenix is expecting to find them, and change the Elm code to point to them.</p>
 
 <p>So, first, move the logo image into Phoenix’s image assets directory:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv assets/elm/public/logo.svg assets/static/images/logo.svg
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv </span>assets/elm/public/logo.svg assets/static/images/logo.svg
 </code></pre></div></div>
 
 <p>Then, change the Elm code to look for the image in Phoenix (<code class="highlighter-rouge">/images/logo.svg</code>),
@@ -531,15 +531,15 @@ rather than in Elm (<code class="highlighter-rouge">/logo.svg</code>):</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Main</span> <span class="n">exposing</span> <span class="p">(</span><span class="o">..</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Main</span> <span class="k">exposing</span> <span class="p">(</span><span class="o">..</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">view</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">view</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">view</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="n">div</span> <span class="kt">[]</span>
-        <span class="p">[</span> <span class="n">img</span> <span class="p">[</span> <span class="n">src</span> <span class="s">"/images/logo.svg"</span> <span class="p">]</span> <span class="kt">[]</span>
-        <span class="p">,</span> <span class="n">h1</span> <span class="kt">[]</span> <span class="p">[</span> <span class="n">text</span> <span class="s">"Your Elm App is working!"</span> <span class="p">]</span>
+    <span class="n">div</span> <span class="p">[]</span>
+        <span class="p">[</span> <span class="n">img</span> <span class="p">[</span> <span class="n">src</span> <span class="s">"</span><span class="s2">/images/logo.svg"</span> <span class="p">]</span> <span class="p">[]</span>
+        <span class="o">,</span> <span class="n">h1</span> <span class="p">[]</span> <span class="p">[</span> <span class="n">text</span> <span class="s">"</span><span class="s2">Your Elm App is working!"</span> <span class="p">]</span>
         <span class="p">]</span>
 </code></pre></div></div>
 
@@ -578,18 +578,18 @@ temporary anyway…).</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Main</span> <span class="n">exposing</span> <span class="p">(</span><span class="o">..</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Main</span> <span class="k">exposing</span> <span class="p">(</span><span class="o">..</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Html</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Html</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">div</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Html.Attributes</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">src</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Html</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Html</span><span class="o">,</span> <span class="n">text</span><span class="o">,</span> <span class="n">div</span><span class="o">,</span> <span class="n">h1</span><span class="o">,</span> <span class="n">img</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Html</span><span class="o">.</span><span class="kt">Attributes</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">id</span><span class="o">,</span> <span class="n">src</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">view</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">view</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">view</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="n">div</span> <span class="kt">[]</span>
-        <span class="p">[</span> <span class="n">img</span> <span class="p">[</span> <span class="n">src</span> <span class="s">"/images/logo.svg"</span><span class="p">,</span> <span class="n">id</span> <span class="s">"elm-logo"</span> <span class="p">]</span> <span class="kt">[]</span>
-        <span class="p">,</span> <span class="n">h1</span> <span class="kt">[]</span> <span class="p">[</span> <span class="n">text</span> <span class="s">"Your Elm App is working!"</span> <span class="p">]</span>
+    <span class="n">div</span> <span class="p">[]</span>
+        <span class="p">[</span> <span class="n">img</span> <span class="p">[</span> <span class="n">src</span> <span class="s">"</span><span class="s2">/images/logo.svg"</span><span class="o">,</span> <span class="n">id</span> <span class="s">"</span><span class="s2">elm-logo"</span> <span class="p">]</span> <span class="p">[]</span>
+        <span class="o">,</span> <span class="n">h1</span> <span class="p">[]</span> <span class="p">[</span> <span class="n">text</span> <span class="s">"</span><span class="s2">Your Elm App is working!"</span> <span class="p">]</span>
         <span class="p">]</span>
 </code></pre></div></div>
 

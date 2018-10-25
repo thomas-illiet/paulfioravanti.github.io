@@ -396,7 +396,7 @@ give the translations some type safety</li>
 
 <p><a href="https://github.com/halfzebra/create-elm-app">Create Elm App</a> will help us bootstrap our app, so install it with:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install <span class="nt">-g</span> create-elm-app
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> create-elm-app
 </code></pre></div></div>
 
 <p>Then, generate a new app, initialise <code class="highlighter-rouge">npm</code> (using the default fields provided
@@ -405,7 +405,7 @@ for the generated <code class="highlighter-rouge">package.json</code> file is fi
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>create-elm-app elm-i18n-example
 <span class="nb">cd </span>elm-i18n-example
 npm init
-npm install tachyons
+npm <span class="nb">install </span>tachyons
 </code></pre></div></div>
 
 <p>Next, to import Tachyons into the project, change the generated <code class="highlighter-rouge">index.js</code> file
@@ -441,7 +441,7 @@ removed, as well as references to it in <code class="highlighter-rouge">src/Main
 
 <p>So, run the command below and make the following changes:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm src/main.css src/registerServiceWorker.js public/logo.svg
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm </span>src/main.css src/registerServiceWorker.js public/logo.svg
 </code></pre></div></div>
 
 <p><strong><code class="highlighter-rouge">src/index.js</code></strong></p>
@@ -454,12 +454,12 @@ removed, as well as references to it in <code class="highlighter-rouge">src/Main
 
 <p><strong><code class="highlighter-rouge">src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
 
-<span class="n">view</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">view</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">view</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="n">div</span> <span class="kt">[]</span>
-        <span class="p">[</span> <span class="n">h1</span> <span class="kt">[]</span> <span class="p">[</span> <span class="n">text</span> <span class="s">"Your Elm App is working!"</span> <span class="p">]</span>
+    <span class="n">div</span> <span class="p">[]</span>
+        <span class="p">[</span> <span class="n">h1</span> <span class="p">[]</span> <span class="p">[</span> <span class="n">text</span> <span class="s">"</span><span class="s2">Your Elm App is working!"</span> <span class="p">]</span>
         <span class="p">]</span>
 </code></pre></div></div>
 
@@ -474,69 +474,69 @@ edits), change the <code class="highlighter-rouge">Main.elm</code> module defini
 
 <p><strong><code class="highlighter-rouge">src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Main</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">main</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Main</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">main</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Html</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Html</span><span class="p">,</span> <span class="n">article</span><span class="p">,</span> <span class="n">div</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">main_</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Html.Attributes</span> <span class="n">exposing</span> <span class="p">(</span><span class="kr">class</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Html</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Html</span><span class="o">,</span> <span class="n">article</span><span class="o">,</span> <span class="n">div</span><span class="o">,</span> <span class="n">h1</span><span class="o">,</span> <span class="n">main_</span><span class="o">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Html</span><span class="o">.</span><span class="kt">Attributes</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">class</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">view</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">view</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">view</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">classes</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"bg-dark-pink"</span>
-            <span class="p">,</span> <span class="s">"overflow-container"</span>
-            <span class="p">,</span> <span class="s">"sans-serif"</span>
-            <span class="p">,</span> <span class="s">"white"</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">bg-dark-pink"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">overflow-container"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">sans-serif"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">white"</span>
             <span class="p">]</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
-    <span class="kr">in</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
+    <span class="k">in</span>
         <span class="n">main_</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
             <span class="p">[</span> <span class="n">content</span> <span class="p">]</span>
 
 
-<span class="n">content</span> <span class="o">:</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">content</span> <span class="p">:</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">content</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">articleClasses</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"dt"</span>
-            <span class="p">,</span> <span class="s">"vh-100"</span>
-            <span class="p">,</span> <span class="s">"w-100"</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">dt"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">vh-100"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">w-100"</span>
             <span class="p">]</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
 
         <span class="n">divClasses</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"dtc"</span>
-            <span class="p">,</span> <span class="s">"ph3 ph4-l"</span>
-            <span class="p">,</span> <span class="s">"tc"</span>
-            <span class="p">,</span> <span class="s">"v-mid"</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">dtc"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">ph3 ph4-l"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">tc"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">v-mid"</span>
             <span class="p">]</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
-    <span class="kr">in</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
+    <span class="k">in</span>
         <span class="n">article</span> <span class="p">[</span> <span class="n">articleClasses</span> <span class="p">]</span>
             <span class="p">[</span> <span class="n">div</span> <span class="p">[</span> <span class="n">divClasses</span> <span class="p">]</span>
                 <span class="p">[</span> <span class="n">heading</span> <span class="p">]</span>
             <span class="p">]</span>
 
 
-<span class="n">heading</span> <span class="o">:</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">heading</span> <span class="p">:</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">heading</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">classes</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"f6 f2m"</span>
-            <span class="p">,</span> <span class="s">"f-subheadline-l"</span>
-            <span class="p">,</span> <span class="s">"fw6"</span>
-            <span class="p">,</span> <span class="s">"tc"</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">f6 f2m"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">f-subheadline-l"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">fw6"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">tc"</span>
             <span class="p">]</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
-    <span class="kr">in</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
+    <span class="k">in</span>
         <span class="n">h1</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
-            <span class="p">[</span> <span class="n">text</span> <span class="s">"Vertically centering things in css is easy!"</span> <span class="p">]</span>
+            <span class="p">[</span> <span class="n">text</span> <span class="s">"</span><span class="s2">Vertically centering things in css is easy!"</span> <span class="p">]</span>
 </code></pre></div></div>
 
 <p>I think that putting Tachyons classes in lists like this makes them easier to
@@ -584,58 +584,58 @@ right.</p>
 
 <p><strong><code class="highlighter-rouge">src/LanguageDropdown.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">LanguageDropdown</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">view</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">LanguageDropdown</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Html</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Html</span><span class="p">,</span> <span class="n">div</span><span class="p">,</span> <span class="n">li</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">span</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">ul</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Html.Attributes</span> <span class="n">exposing</span> <span class="p">(</span><span class="kr">class</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Html</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Html</span><span class="o">,</span> <span class="n">div</span><span class="o">,</span> <span class="n">li</span><span class="o">,</span> <span class="n">p</span><span class="o">,</span> <span class="n">span</span><span class="o">,</span> <span class="n">text</span><span class="o">,</span> <span class="n">ul</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Html</span><span class="o">.</span><span class="kt">Attributes</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">class</span><span class="p">)</span>
 
 
-<span class="n">view</span> <span class="o">:</span> <span class="kt">Html</span> <span class="n">msg</span>
+<span class="n">view</span> <span class="p">:</span> <span class="kt">Html</span> <span class="n">msg</span>
 <span class="n">view</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">classes</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"center"</span>
-            <span class="p">,</span> <span class="s">"f3"</span>
-            <span class="p">,</span> <span class="s">"flex"</span>
-            <span class="p">,</span> <span class="s">"h3"</span>
-            <span class="p">,</span> <span class="s">"items-center"</span>
-            <span class="p">,</span> <span class="s">"justify-end"</span>
-            <span class="p">,</span> <span class="s">"w-90"</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">center"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">f3"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">flex"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">h3"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">items-center"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">justify-end"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">w-90"</span>
             <span class="p">]</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
-    <span class="kr">in</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
+    <span class="k">in</span>
         <span class="n">div</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
             <span class="p">[</span> <span class="n">currentSelection</span> <span class="p">]</span>
 
 
-<span class="n">currentSelection</span> <span class="o">:</span> <span class="kt">Html</span> <span class="n">msg</span>
+<span class="n">currentSelection</span> <span class="p">:</span> <span class="kt">Html</span> <span class="n">msg</span>
 <span class="n">currentSelection</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">classes</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"b--white"</span>
-            <span class="p">,</span> <span class="s">"ba"</span>
-            <span class="p">,</span> <span class="s">"br2"</span>
-            <span class="p">,</span> <span class="s">"pa2"</span>
-            <span class="p">,</span> <span class="s">"pointer"</span>
-            <span class="p">,</span> <span class="s">"tc"</span>
-            <span class="p">,</span> <span class="s">"w4"</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">b--white"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">ba"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">br2"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">pa2"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">pointer"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">tc"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">w4"</span>
             <span class="p">]</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
 
         <span class="n">caretClasses</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"absolute"</span>
-            <span class="p">,</span> <span class="s">"ml2"</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">absolute"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">ml2"</span>
             <span class="p">]</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
-    <span class="kr">in</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
+    <span class="k">in</span>
         <span class="n">p</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
-            <span class="p">[</span> <span class="n">span</span> <span class="kt">[]</span>
-                <span class="p">[</span> <span class="n">text</span> <span class="s">"English"</span> <span class="p">]</span>
-            <span class="p">,</span> <span class="n">span</span> <span class="p">[</span> <span class="n">caretClasses</span> <span class="p">]</span>
-                <span class="p">[</span> <span class="n">text</span> <span class="s">"▾"</span> <span class="p">]</span>
+            <span class="p">[</span> <span class="n">span</span> <span class="p">[]</span>
+                <span class="p">[</span> <span class="n">text</span> <span class="s">"</span><span class="s2">English"</span> <span class="p">]</span>
+            <span class="o">,</span> <span class="n">span</span> <span class="p">[</span> <span class="n">caretClasses</span> <span class="p">]</span>
+                <span class="p">[</span> <span class="n">text</span> <span class="s">"</span><span class="s2">▾"</span> <span class="p">]</span>
             <span class="p">]</span>
 </code></pre></div></div>
 
@@ -645,43 +645,43 @@ more on the page than just the message:</p>
 
 <p><strong><code class="highlighter-rouge">src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
-<span class="kr">import</span> <span class="nn">LanguageDropdown</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<span class="k">import</span> <span class="kt">LanguageDropdown</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">view</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">view</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">view</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">classes</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"bg-dark-pink"</span>
-            <span class="p">,</span> <span class="s">"overflow-container"</span>
-            <span class="p">,</span> <span class="s">"pt3"</span>
-            <span class="p">,</span> <span class="s">"sans-serif"</span>
-            <span class="p">,</span> <span class="s">"vh-100"</span>
-            <span class="p">,</span> <span class="s">"white"</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">bg-dark-pink"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">overflow-container"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">pt3"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">sans-serif"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">vh-100"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">white"</span>
             <span class="p">]</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
-    <span class="kr">in</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
+    <span class="k">in</span>
         <span class="n">main_</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
             <span class="p">[</span> <span class="kt">LanguageDropdown</span><span class="o">.</span><span class="n">view</span>
-            <span class="p">,</span> <span class="n">content</span>
+            <span class="o">,</span> <span class="n">content</span>
             <span class="p">]</span>
 
-<span class="n">content</span> <span class="o">:</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">content</span> <span class="p">:</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">content</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">articleClasses</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"dt"</span>
-            <span class="p">,</span> <span class="s">"vh-75"</span>
-            <span class="p">,</span> <span class="s">"w-100"</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">dt"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">vh-75"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">w-100"</span>
             <span class="p">]</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
 
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="c1">-- ...</span>
 </code></pre></div></div>
 
@@ -697,67 +697,67 @@ Now, let’s actually give it a <code class="highlighter-rouge">dropdownList</co
 
 <p><strong><code class="highlighter-rouge">src/LanguageDropdown.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">view</span> <span class="o">:</span> <span class="kt">Html</span> <span class="n">msg</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">view</span> <span class="p">:</span> <span class="kt">Html</span> <span class="n">msg</span>
 <span class="n">view</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">div</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
             <span class="p">[</span> <span class="n">currentSelection</span>
-            <span class="p">,</span> <span class="n">dropdownList</span>
+            <span class="o">,</span> <span class="n">dropdownList</span>
             <span class="p">]</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">dropdownList</span> <span class="o">:</span> <span class="kt">Html</span> <span class="n">msg</span>
+<span class="n">dropdownList</span> <span class="p">:</span> <span class="kt">Html</span> <span class="n">msg</span>
 <span class="n">dropdownList</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">classes</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"absolute"</span>
-            <span class="p">,</span> <span class="s">"b--white"</span>
-            <span class="p">,</span> <span class="s">"bb"</span>
-            <span class="p">,</span> <span class="s">"bl"</span>
-            <span class="p">,</span> <span class="s">"br"</span>
-            <span class="p">,</span> <span class="s">"br--bottom"</span>
-            <span class="p">,</span> <span class="s">"br2"</span>
-            <span class="p">,</span> <span class="s">"items-center"</span>
-            <span class="p">,</span> <span class="s">"list"</span>
-            <span class="p">,</span> <span class="s">"mt5"</span>
-            <span class="p">,</span> <span class="s">"pl0"</span>
-            <span class="p">,</span> <span class="s">"pointer"</span>
-            <span class="p">,</span> <span class="s">"pr0"</span>
-            <span class="p">,</span> <span class="s">"pt1"</span>
-            <span class="p">,</span> <span class="s">"tc"</span>
-            <span class="p">,</span> <span class="s">"top-0"</span>
-            <span class="p">,</span> <span class="s">"w4"</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">absolute"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">b--white"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">bb"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">bl"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">br"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">br--bottom"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">br2"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">items-center"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">list"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">mt5"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">pl0"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">pointer"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">pr0"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">pt1"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">tc"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">top-0"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">w4"</span>
             <span class="p">]</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
 
         <span class="n">selectableLanguages</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"Italiano"</span><span class="p">,</span> <span class="s">"日本語"</span> <span class="p">]</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">Italiano"</span><span class="o">,</span> <span class="s">"</span><span class="s2">日本語"</span> <span class="p">]</span>
 
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">ul</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
             <span class="p">(</span><span class="kt">List</span><span class="o">.</span><span class="n">map</span> <span class="n">dropdownListItem</span> <span class="n">selectableLanguages</span><span class="p">)</span>
 
 
-<span class="n">dropdownListItem</span> <span class="o">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="n">msg</span>
+<span class="n">dropdownListItem</span> <span class="p">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="n">msg</span>
 <span class="n">dropdownListItem</span> <span class="n">language</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">classes</span> <span class="o">=</span>
-            <span class="p">[</span> <span class="s">"hover-bg-white"</span>
-            <span class="p">,</span> <span class="s">"hover-dark-pink"</span>
-            <span class="p">,</span> <span class="s">"ph1"</span>
-            <span class="p">,</span> <span class="s">"pv2"</span>
-            <span class="p">,</span> <span class="s">"pt0"</span>
-            <span class="p">,</span> <span class="s">"w-100"</span>
+            <span class="p">[</span> <span class="s">"</span><span class="s2">hover-bg-white"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">hover-dark-pink"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">ph1"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">pv2"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">pt0"</span>
+            <span class="o">,</span> <span class="s">"</span><span class="s2">w-100"</span>
             <span class="p">]</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
-    <span class="kr">in</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
+    <span class="k">in</span>
         <span class="n">li</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
-            <span class="p">[</span> <span class="n">span</span> <span class="kt">[]</span> <span class="p">[</span> <span class="n">text</span> <span class="n">language</span> <span class="p">]</span> <span class="p">]</span>
+            <span class="p">[</span> <span class="n">span</span> <span class="p">[]</span> <span class="p">[</span> <span class="n">text</span> <span class="n">language</span> <span class="p">]</span> <span class="p">]</span>
 </code></pre></div></div>
 
 <p>This results in:</p>
@@ -799,10 +799,10 @@ it into its own module:</p>
 
 <p><strong><code class="highlighter-rouge">src/Msg.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Msg</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Msg</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
 
 
-<span class="kr">type</span> <span class="kt">Msg</span>
+<span class="k">type</span> <span class="kt">Msg</span>
     <span class="o">=</span> <span class="kt">CloseAvailableLanguages</span>
     <span class="o">|</span> <span class="kt">ShowAvailableLanguages</span>
 </code></pre></div></div>
@@ -812,18 +812,18 @@ module, making sure that the dropdown is set to be hidden by default:</p>
 
 <p><strong><code class="highlighter-rouge">src/Model.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="o">,</span> <span class="n">init</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Msg</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">)</span>
-
-
-<span class="kr">type</span> <span class="n">alias</span> <span class="kt">Model</span> <span class="o">=</span>
-    <span class="p">{</span> <span class="n">showAvailableLanguages</span> <span class="o">:</span> <span class="kt">Bool</span> <span class="p">}</span>
+<span class="k">import</span> <span class="kt">Msg</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">)</span>
 
 
-<span class="n">init</span> <span class="o">:</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="k">type</span> <span class="k">alias</span> <span class="kt">Model</span> <span class="o">=</span>
+    <span class="p">{</span> <span class="n">showAvailableLanguages</span> <span class="p">:</span> <span class="kt">Bool</span> <span class="p">}</span>
+
+
+<span class="n">init</span> <span class="p">:</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">init</span> <span class="o">=</span>
-    <span class="p">(</span> <span class="p">{</span> <span class="n">showAvailableLanguages</span> <span class="o">=</span> <span class="kt">False</span> <span class="p">},</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
+    <span class="p">(</span> <span class="p">{</span> <span class="n">showAvailableLanguages</span> <span class="o">=</span> <span class="kt">False</span> <span class="p">}</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
 </code></pre></div></div>
 
 <p>Now, we need to update <code class="highlighter-rouge">Main.elm</code> and <code class="highlighter-rouge">LanguageDropdown.elm</code> to import these
@@ -832,33 +832,33 @@ function:</p>
 
 <p><strong><code class="highlighter-rouge">src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
-<span class="kr">import</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Msg</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">CloseAvailableLanguages</span><span class="p">,</span> <span class="kt">ShowAvailableLanguages</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<span class="k">import</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Msg</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">CloseAvailableLanguages</span><span class="o">,</span> <span class="kt">ShowAvailableLanguages</span><span class="p">))</span>
 
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="kt">CloseAvailableLanguages</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">showAvailableLanguages</span> <span class="o">=</span> <span class="kt">False</span> <span class="p">},</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
+            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">showAvailableLanguages</span> <span class="o">=</span> <span class="kt">False</span> <span class="p">}</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
 
         <span class="kt">ShowAvailableLanguages</span> <span class="o">-&gt;</span>
             <span class="p">(</span> <span class="p">{</span> <span class="n">model</span>
                 <span class="o">|</span> <span class="n">showAvailableLanguages</span> <span class="o">=</span> <span class="n">not</span> <span class="n">model</span><span class="o">.</span><span class="n">showAvailableLanguages</span>
               <span class="p">}</span>
-            <span class="p">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span>
+            <span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span>
             <span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">main</span> <span class="o">:</span> <span class="kt">Program</span> <span class="kt">Never</span> <span class="kt">Model</span> <span class="kt">Msg</span>
+<span class="n">main</span> <span class="p">:</span> <span class="kt">Program</span> <span class="kt">Never</span> <span class="kt">Model</span> <span class="kt">Msg</span>
 <span class="n">main</span> <span class="o">=</span>
     <span class="kt">Html</span><span class="o">.</span><span class="n">program</span>
         <span class="p">{</span> <span class="n">view</span> <span class="o">=</span> <span class="n">view</span>
-        <span class="p">,</span> <span class="n">init</span> <span class="o">=</span> <span class="kt">Model</span><span class="o">.</span><span class="n">init</span>
-        <span class="p">,</span> <span class="n">update</span> <span class="o">=</span> <span class="n">update</span>
-        <span class="p">,</span> <span class="n">subscriptions</span> <span class="o">=</span> <span class="n">always</span> <span class="kt">Sub</span><span class="o">.</span><span class="n">none</span>
+        <span class="o">,</span> <span class="n">init</span> <span class="o">=</span> <span class="kt">Model</span><span class="o">.</span><span class="n">init</span>
+        <span class="o">,</span> <span class="n">update</span> <span class="o">=</span> <span class="n">update</span>
+        <span class="o">,</span> <span class="n">subscriptions</span> <span class="o">=</span> <span class="n">always</span> <span class="kt">Sub</span><span class="o">.</span><span class="n">none</span>
         <span class="p">}</span>
 </code></pre></div></div>
 
@@ -870,68 +870,68 @@ as how to style the dropdown menu when it is open and closed:</p>
 
 <p><strong><code class="highlighter-rouge">src/LanguageDropdown.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
-<span class="kr">import</span> <span class="nn">Html.Events</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">onClick</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Msg</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ShowAvailableLanguages</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<span class="k">import</span> <span class="kt">Html</span><span class="o">.</span><span class="kt">Events</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">onClick</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Msg</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ShowAvailableLanguages</span><span class="p">))</span>
 
 
-<span class="n">view</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">view</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">view</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">div</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
             <span class="p">[</span> <span class="n">currentSelection</span> <span class="n">model</span>
-            <span class="p">,</span> <span class="n">dropdownList</span> <span class="n">model</span>
+            <span class="o">,</span> <span class="n">dropdownList</span> <span class="n">model</span>
             <span class="p">]</span>
 
 
-<span class="n">currentSelection</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">currentSelection</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">currentSelection</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">displayClasses</span> <span class="o">=</span>
-            <span class="kr">if</span> <span class="n">model</span><span class="o">.</span><span class="n">showAvailableLanguages</span> <span class="kr">then</span>
-                <span class="p">[</span> <span class="s">"br--top"</span> <span class="p">]</span>
-            <span class="kr">else</span>
-                <span class="kt">[]</span>
+            <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">showAvailableLanguages</span> <span class="k">then</span>
+                <span class="p">[</span> <span class="s">"</span><span class="s2">br--top"</span> <span class="p">]</span>
+            <span class="k">else</span>
+                <span class="p">[]</span>
 
         <span class="n">classes</span> <span class="o">=</span>
             <span class="p">[</span> <span class="c1">-- ...</span>
             <span class="p">]</span>
                 <span class="o">++</span> <span class="n">displayClasses</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
 
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
-        <span class="n">p</span> <span class="p">[</span> <span class="n">classes</span><span class="p">,</span> <span class="n">onClick</span> <span class="kt">ShowAvailableLanguages</span> <span class="p">]</span>
+    <span class="k">in</span>
+        <span class="n">p</span> <span class="p">[</span> <span class="n">classes</span><span class="o">,</span> <span class="n">onClick</span> <span class="kt">ShowAvailableLanguages</span> <span class="p">]</span>
             <span class="p">[</span> <span class="c1">-- ...</span>
             <span class="p">]</span>
 
 
-<span class="n">dropdownList</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">dropdownList</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">dropdownList</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">displayClasses</span> <span class="o">=</span>
-            <span class="kr">if</span> <span class="n">model</span><span class="o">.</span><span class="n">showAvailableLanguages</span> <span class="kr">then</span>
-                <span class="p">[</span> <span class="s">"flex"</span><span class="p">,</span> <span class="s">"flex-column"</span> <span class="p">]</span>
-            <span class="kr">else</span>
-                <span class="p">[</span> <span class="s">"dn"</span> <span class="p">]</span>
+            <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">showAvailableLanguages</span> <span class="k">then</span>
+                <span class="p">[</span> <span class="s">"</span><span class="s2">flex"</span><span class="o">,</span> <span class="s">"</span><span class="s2">flex-column"</span> <span class="p">]</span>
+            <span class="k">else</span>
+                <span class="p">[</span> <span class="s">"</span><span class="s2">dn"</span> <span class="p">]</span>
 
         <span class="n">classes</span> <span class="o">=</span>
             <span class="p">[</span> <span class="c1">-- ...</span>
             <span class="p">]</span>
                 <span class="o">++</span> <span class="n">displayClasses</span>
-                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">" "</span>
-                <span class="o">|&gt;</span> <span class="kr">class</span>
+                <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">join</span> <span class="s">"</span><span class="s2"> "</span>
+                <span class="o">|&gt;</span> <span class="n">class</span>
 
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
        <span class="c1">-- ...</span>
 
 
-<span class="n">dropdownListItem</span> <span class="o">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">dropdownListItem</span> <span class="p">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="c1">-- ...</span>
 </code></pre></div></div>
 
@@ -947,7 +947,7 @@ subscription to mouse clicks.</p>
 
 <p>Install the Elm Mouse package:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elm-package install <span class="nt">-y</span> elm-lang/mouse
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elm-package <span class="nb">install</span> <span class="nt">-y</span> elm-lang/mouse
 </code></pre></div></div>
 
 <p>Then, create a <code class="highlighter-rouge">subscriptions</code> function in Elm that listens out for mouse clicks
@@ -956,26 +956,26 @@ subscription to mouse clicks.</p>
 
 <p><strong><code class="highlighter-rouge">src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
-<span class="kr">import</span> <span class="nn">Mouse</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<span class="k">import</span> <span class="kt">Mouse</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">subscriptions</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Sub</span> <span class="kt">Msg</span>
+<span class="n">subscriptions</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Sub</span> <span class="kt">Msg</span>
 <span class="n">subscriptions</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">if</span> <span class="n">model</span><span class="o">.</span><span class="n">showAvailableLanguages</span> <span class="kr">then</span>
-        <span class="kt">Mouse</span><span class="o">.</span><span class="n">clicks</span> <span class="p">(</span><span class="nf">\</span><span class="kr">_</span> <span class="o">-&gt;</span> <span class="kt">CloseAvailableLanguages</span><span class="p">)</span>
-    <span class="kr">else</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">showAvailableLanguages</span> <span class="k">then</span>
+        <span class="kt">Mouse</span><span class="o">.</span><span class="n">clicks</span> <span class="p">(</span><span class="o">\</span><span class="n">_</span> <span class="o">-&gt;</span> <span class="kt">CloseAvailableLanguages</span><span class="p">)</span>
+    <span class="k">else</span>
         <span class="kt">Sub</span><span class="o">.</span><span class="n">none</span>
 
 
-<span class="n">main</span> <span class="o">:</span> <span class="kt">Program</span> <span class="kt">Never</span> <span class="kt">Model</span> <span class="kt">Msg</span>
+<span class="n">main</span> <span class="p">:</span> <span class="kt">Program</span> <span class="kt">Never</span> <span class="kt">Model</span> <span class="kt">Msg</span>
 <span class="n">main</span> <span class="o">=</span>
     <span class="kt">Html</span><span class="o">.</span><span class="n">programWithFlags</span>
         <span class="p">{</span> <span class="n">view</span> <span class="o">=</span> <span class="n">view</span>
-        <span class="p">,</span> <span class="n">init</span> <span class="o">=</span> <span class="kt">Model</span><span class="o">.</span><span class="n">init</span>
-        <span class="p">,</span> <span class="n">update</span> <span class="o">=</span> <span class="n">update</span>
-        <span class="p">,</span> <span class="n">subscriptions</span> <span class="o">=</span> <span class="n">subscriptions</span>
+        <span class="o">,</span> <span class="n">init</span> <span class="o">=</span> <span class="kt">Model</span><span class="o">.</span><span class="n">init</span>
+        <span class="o">,</span> <span class="n">update</span> <span class="o">=</span> <span class="n">update</span>
+        <span class="o">,</span> <span class="n">subscriptions</span> <span class="o">=</span> <span class="n">subscriptions</span>
         <span class="p">}</span>
 </code></pre></div></div>
 
@@ -995,8 +995,8 @@ replace those placeholder values with actual data!</p>
 <a href="https://github.com/ChristophP/elm-i18next">elm-i18next</a>, along with the <a href="https://github.com/elm-lang/http">HTTP in Elm</a> package, so let’s get
 installing:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elm-package install <span class="nt">-y</span> ChristophP/elm-i18next
-elm-package install <span class="nt">-y</span> elm-lang/http
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elm-package <span class="nb">install</span> <span class="nt">-y</span> ChristophP/elm-i18next
+elm-package <span class="nb">install</span> <span class="nt">-y</span> elm-lang/http
 </code></pre></div></div>
 
 <p>First, let’s provide some translation JSON files for the message on screen in
@@ -1030,28 +1030,28 @@ into a language:</p>
 
 <p><strong><code class="highlighter-rouge">src/Translations.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Translations</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">(</span><span class="o">..</span><span class="p">),</span> <span class="n">getLnFromCode</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Translations</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">(</span><span class="o">..</span><span class="p">)</span><span class="o">,</span> <span class="n">getLnFromCode</span><span class="p">)</span>
 
 
-<span class="kr">type</span> <span class="kt">Lang</span>
+<span class="k">type</span> <span class="kt">Lang</span>
     <span class="o">=</span> <span class="kt">En</span>
     <span class="o">|</span> <span class="kt">It</span>
     <span class="o">|</span> <span class="kt">Ja</span>
 
 
-<span class="n">getLnFromCode</span> <span class="o">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Lang</span>
+<span class="n">getLnFromCode</span> <span class="p">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Lang</span>
 <span class="n">getLnFromCode</span> <span class="n">code</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">code</span> <span class="kr">of</span>
-        <span class="s">"en"</span> <span class="o">-&gt;</span>
+    <span class="k">case</span> <span class="n">code</span> <span class="k">of</span>
+        <span class="s">"</span><span class="s2">en"</span> <span class="o">-&gt;</span>
             <span class="kt">En</span>
 
-        <span class="s">"it"</span> <span class="o">-&gt;</span>
+        <span class="s">"</span><span class="s2">it"</span> <span class="o">-&gt;</span>
             <span class="kt">It</span>
 
-        <span class="s">"ja"</span> <span class="o">-&gt;</span>
+        <span class="s">"</span><span class="s2">ja"</span> <span class="o">-&gt;</span>
             <span class="kt">Ja</span>
 
-        <span class="kr">_</span> <span class="o">-&gt;</span>
+        <span class="n">_</span> <span class="o">-&gt;</span>
             <span class="kt">En</span>
 </code></pre></div></div>
 
@@ -1064,14 +1064,14 @@ into a language:</p>
 
 <p><strong><code class="highlighter-rouge">src/Msg.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Msg</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Msg</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
 
-<span class="kr">import</span> <span class="nn">Http</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">I18Next</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Translations</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Translations</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Http</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">I18Next</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Translations</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Translations</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">)</span>
 
 
-<span class="kr">type</span> <span class="kt">Msg</span>
+<span class="k">type</span> <span class="kt">Msg</span>
     <span class="o">=</span> <span class="kt">ChangeLanguage</span> <span class="kt">Lang</span>
     <span class="o">|</span> <span class="kt">CloseAvailableLanguages</span>
     <span class="o">|</span> <span class="kt">FetchTranslations</span> <span class="p">(</span><span class="kt">Result</span> <span class="kt">Error</span> <span class="kt">Translations</span><span class="p">)</span>
@@ -1084,29 +1084,29 @@ create that in a new module called <code class="highlighter-rouge">Cmd</code>:</
 
 <p><strong><code class="highlighter-rouge">src/Cmd.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Cmd</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">fetchTranslations</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Cmd</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">fetchTranslations</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">I18Next</span>
-<span class="kr">import</span> <span class="nn">Msg</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">FetchTranslations</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Translations</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">I18Next</span>
+<span class="k">import</span> <span class="kt">Msg</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">FetchTranslations</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Translations</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">)</span>
 
 
-<span class="n">fetchTranslations</span> <span class="o">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
+<span class="n">fetchTranslations</span> <span class="p">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
 <span class="n">fetchTranslations</span> <span class="n">language</span> <span class="o">=</span>
     <span class="n">language</span>
         <span class="o">|&gt;</span> <span class="n">toTranslationsUrl</span>
         <span class="o">|&gt;</span> <span class="kt">I18Next</span><span class="o">.</span><span class="n">fetchTranslations</span> <span class="kt">FetchTranslations</span>
 
 
-<span class="n">toTranslationsUrl</span> <span class="o">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">String</span>
+<span class="n">toTranslationsUrl</span> <span class="p">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">String</span>
 <span class="n">toTranslationsUrl</span> <span class="n">language</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">translationLanguage</span> <span class="o">=</span>
             <span class="n">language</span>
                 <span class="o">|&gt;</span> <span class="n">toString</span>
                 <span class="o">|&gt;</span> <span class="kt">String</span><span class="o">.</span><span class="n">toLower</span>
-    <span class="kr">in</span>
-        <span class="s">"/locale/translations."</span> <span class="o">++</span> <span class="n">translationLanguage</span> <span class="o">++</span> <span class="s">".json"</span>
+    <span class="k">in</span>
+        <span class="s">"</span><span class="s2">/locale/translations."</span> <span class="o">++</span> <span class="n">translationLanguage</span> <span class="o">++</span> <span class="s">"</span><span class="s2">.json"</span>
 </code></pre></div></div>
 
 <p>Now, the <code class="highlighter-rouge">Model</code> needs to know about what the <code class="highlighter-rouge">currentLanguage</code> of the
@@ -1117,28 +1117,28 @@ also set as the default language:</p>
 
 <p><strong><code class="highlighter-rouge">src/Model.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="o">,</span> <span class="n">init</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Cmd</span>
-<span class="kr">import</span> <span class="nn">I18Next</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Translations</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Msg</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Translations</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">(</span><span class="kt">En</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Cmd</span>
+<span class="k">import</span> <span class="kt">I18Next</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Translations</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Msg</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Translations</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">(</span><span class="kt">En</span><span class="p">))</span>
 
 
-<span class="kr">type</span> <span class="n">alias</span> <span class="kt">Model</span> <span class="o">=</span>
-    <span class="p">{</span> <span class="n">currentLanguage</span> <span class="o">:</span> <span class="kt">Lang</span>
-    <span class="p">,</span> <span class="n">showAvailableLanguages</span> <span class="o">:</span> <span class="kt">Bool</span>
-    <span class="p">,</span> <span class="n">translations</span> <span class="o">:</span> <span class="kt">Translations</span>
+<span class="k">type</span> <span class="k">alias</span> <span class="kt">Model</span> <span class="o">=</span>
+    <span class="p">{</span> <span class="n">currentLanguage</span> <span class="p">:</span> <span class="kt">Lang</span>
+    <span class="o">,</span> <span class="n">showAvailableLanguages</span> <span class="p">:</span> <span class="kt">Bool</span>
+    <span class="o">,</span> <span class="n">translations</span> <span class="p">:</span> <span class="kt">Translations</span>
     <span class="p">}</span>
 
 
-<span class="n">init</span> <span class="o">:</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">init</span> <span class="p">:</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">init</span> <span class="o">=</span>
     <span class="p">(</span> <span class="p">{</span> <span class="n">currentLanguage</span> <span class="o">=</span> <span class="kt">En</span>
-      <span class="p">,</span> <span class="n">showAvailableLanguages</span> <span class="o">=</span> <span class="kt">False</span>
-      <span class="p">,</span> <span class="n">translations</span> <span class="o">=</span> <span class="kt">I18Next</span><span class="o">.</span><span class="n">initialTranslations</span>
+      <span class="o">,</span> <span class="n">showAvailableLanguages</span> <span class="o">=</span> <span class="kt">False</span>
+      <span class="o">,</span> <span class="n">translations</span> <span class="o">=</span> <span class="kt">I18Next</span><span class="o">.</span><span class="n">initialTranslations</span>
       <span class="p">}</span>
-    <span class="p">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">fetchTranslations</span> <span class="kt">En</span>
+    <span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">fetchTranslations</span> <span class="kt">En</span>
     <span class="p">)</span>
 </code></pre></div></div>
 
@@ -1156,34 +1156,34 @@ to fetch translations for a language that we did not create ourselves.</li>
 
 <p><strong><code class="highlighter-rouge">src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
-<span class="kr">import</span> <span class="nn">Cmd</span>
-<span class="kr">import</span> <span class="nn">Msg</span>
-    <span class="n">exposing</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<span class="k">import</span> <span class="kt">Cmd</span>
+<span class="k">import</span> <span class="kt">Msg</span>
+    <span class="k">exposing</span>
         <span class="p">(</span> <span class="kt">Msg</span>
             <span class="p">(</span> <span class="kt">ChangeLanguage</span>
-            <span class="p">,</span> <span class="kt">CloseAvailableLanguages</span>
-            <span class="p">,</span> <span class="kt">FetchTranslations</span>
-            <span class="p">,</span> <span class="kt">ShowAvailableLanguages</span>
+            <span class="o">,</span> <span class="kt">CloseAvailableLanguages</span>
+            <span class="o">,</span> <span class="kt">FetchTranslations</span>
+            <span class="o">,</span> <span class="kt">ShowAvailableLanguages</span>
             <span class="p">)</span>
         <span class="p">)</span>
 
 <span class="c1">--- ...</span>
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="c1">-- ...</span>
         <span class="kt">ChangeLanguage</span> <span class="n">language</span> <span class="o">-&gt;</span>
             <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">currentLanguage</span> <span class="o">=</span> <span class="n">language</span> <span class="p">}</span>
-            <span class="p">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">fetchTranslations</span> <span class="n">language</span>
+            <span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">fetchTranslations</span> <span class="n">language</span>
             <span class="p">)</span>
 
         <span class="kt">FetchTranslations</span> <span class="p">(</span><span class="kt">Ok</span> <span class="n">translations</span><span class="p">)</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">translations</span> <span class="o">=</span> <span class="n">translations</span> <span class="p">},</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
+            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">translations</span> <span class="o">=</span> <span class="n">translations</span> <span class="p">}</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
 
         <span class="kt">FetchTranslations</span> <span class="p">(</span><span class="kt">Err</span> <span class="n">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="n">model</span><span class="p">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
+            <span class="p">(</span> <span class="n">model</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
 </code></pre></div></div>
 
 <p>At this stage, the application should be back to a point where everything is
@@ -1200,27 +1200,27 @@ separate definition:</p>
 
 <p><strong><code class="highlighter-rouge">src/Language.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Language</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">availableLanguages</span><span class="p">,</span> <span class="n">langToString</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Language</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">availableLanguages</span><span class="o">,</span> <span class="n">langToString</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Translations</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">(</span><span class="kt">En</span><span class="p">,</span> <span class="kt">It</span><span class="p">,</span> <span class="kt">Ja</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Translations</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">(</span><span class="kt">En</span><span class="o">,</span> <span class="kt">It</span><span class="o">,</span> <span class="kt">Ja</span><span class="p">))</span>
 
 
-<span class="n">availableLanguages</span> <span class="o">:</span> <span class="kt">List</span> <span class="kt">Lang</span>
+<span class="n">availableLanguages</span> <span class="p">:</span> <span class="kt">List</span> <span class="kt">Lang</span>
 <span class="n">availableLanguages</span> <span class="o">=</span>
-    <span class="p">[</span> <span class="kt">En</span><span class="p">,</span> <span class="kt">It</span><span class="p">,</span> <span class="kt">Ja</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="kt">En</span><span class="o">,</span> <span class="kt">It</span><span class="o">,</span> <span class="kt">Ja</span> <span class="p">]</span>
 
 
-<span class="n">langToString</span> <span class="o">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">String</span>
+<span class="n">langToString</span> <span class="p">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">String</span>
 <span class="n">langToString</span> <span class="n">language</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">language</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">language</span> <span class="k">of</span>
         <span class="kt">En</span> <span class="o">-&gt;</span>
-            <span class="s">"English"</span>
+            <span class="s">"</span><span class="s2">English"</span>
 
         <span class="kt">It</span> <span class="o">-&gt;</span>
-            <span class="s">"Italiano"</span>
+            <span class="s">"</span><span class="s2">Italiano"</span>
 
         <span class="kt">Ja</span> <span class="o">-&gt;</span>
-            <span class="s">"日本語"</span>
+            <span class="s">"</span><span class="s2">日本語"</span>
 </code></pre></div></div>
 
 <p>Now that we have our language data setup, let’s go back to the view code and
@@ -1230,47 +1230,47 @@ the other available languages in the dropdown:</p>
 
 <p><strong><code class="highlighter-rouge">src/LanguageDropdown.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
-<span class="kr">import</span> <span class="nn">Language</span>
-<span class="kr">import</span> <span class="nn">Msg</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ChangeLanguage</span><span class="p">,</span> <span class="kt">ShowAvailableLanguages</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Translations</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<span class="k">import</span> <span class="kt">Language</span>
+<span class="k">import</span> <span class="kt">Msg</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ChangeLanguage</span><span class="o">,</span> <span class="kt">ShowAvailableLanguages</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Translations</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">currentSelection</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">currentSelection</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">currentSelection</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
-        <span class="n">p</span> <span class="p">[</span> <span class="n">classes</span><span class="p">,</span> <span class="n">onClick</span> <span class="kt">ShowAvailableLanguages</span> <span class="p">]</span>
-            <span class="p">[</span> <span class="n">span</span> <span class="kt">[]</span>
+    <span class="k">in</span>
+        <span class="n">p</span> <span class="p">[</span> <span class="n">classes</span><span class="o">,</span> <span class="n">onClick</span> <span class="kt">ShowAvailableLanguages</span> <span class="p">]</span>
+            <span class="p">[</span> <span class="n">span</span> <span class="p">[]</span>
                 <span class="p">[</span> <span class="n">text</span> <span class="p">(</span><span class="kt">Language</span><span class="o">.</span><span class="n">langToString</span> <span class="n">model</span><span class="o">.</span><span class="n">currentLanguage</span><span class="p">)</span> <span class="p">]</span>
-            <span class="p">,</span> <span class="n">span</span> <span class="p">[</span> <span class="n">caretClasses</span> <span class="p">]</span>
-                <span class="p">[</span> <span class="n">text</span> <span class="s">"▾"</span> <span class="p">]</span>
+            <span class="o">,</span> <span class="n">span</span> <span class="p">[</span> <span class="n">caretClasses</span> <span class="p">]</span>
+                <span class="p">[</span> <span class="n">text</span> <span class="s">"</span><span class="s2">▾"</span> <span class="p">]</span>
             <span class="p">]</span>
 
 
-<span class="n">dropdownList</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">dropdownList</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">dropdownList</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="c1">-- ...</span>
 
         <span class="n">selectableLanguages</span> <span class="o">=</span>
             <span class="kt">List</span><span class="o">.</span><span class="n">filter</span>
-                <span class="p">(</span><span class="nf">\</span><span class="n">language</span> <span class="o">-&gt;</span> <span class="n">language</span> <span class="o">/=</span> <span class="n">model</span><span class="o">.</span><span class="n">currentLanguage</span><span class="p">)</span>
+                <span class="p">(</span><span class="o">\</span><span class="n">language</span> <span class="o">-&gt;</span> <span class="n">language</span> <span class="o">/=</span> <span class="n">model</span><span class="o">.</span><span class="n">currentLanguage</span><span class="p">)</span>
                 <span class="kt">Language</span><span class="o">.</span><span class="n">availableLanguages</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">ul</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
             <span class="p">(</span><span class="kt">List</span><span class="o">.</span><span class="n">map</span> <span class="n">dropdownListItem</span> <span class="n">selectableLanguages</span><span class="p">)</span>
 
 
-<span class="n">dropdownListItem</span> <span class="o">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">dropdownListItem</span> <span class="p">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">dropdownListItem</span> <span class="n">language</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
-        <span class="n">li</span> <span class="p">[</span> <span class="n">classes</span><span class="p">,</span> <span class="n">onClick</span> <span class="p">(</span><span class="kt">ChangeLanguage</span> <span class="n">language</span><span class="p">)</span> <span class="p">]</span>
-            <span class="p">[</span> <span class="n">span</span> <span class="kt">[]</span>
+    <span class="k">in</span>
+        <span class="n">li</span> <span class="p">[</span> <span class="n">classes</span><span class="o">,</span> <span class="n">onClick</span> <span class="p">(</span><span class="kt">ChangeLanguage</span> <span class="n">language</span><span class="p">)</span> <span class="p">]</span>
+            <span class="p">[</span> <span class="n">span</span> <span class="p">[]</span>
                 <span class="p">[</span> <span class="n">text</span> <span class="p">(</span><span class="kt">Language</span><span class="o">.</span><span class="n">langToString</span> <span class="n">language</span><span class="p">)</span> <span class="p">]</span>
             <span class="p">]</span>
 </code></pre></div></div>
@@ -1288,40 +1288,40 @@ the content know what translations it is supposed to be displaying:</p>
 
 <p><strong><code class="highlighter-rouge">src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
-<span class="kr">import</span> <span class="nn">Translations</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<span class="k">import</span> <span class="kt">Translations</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">view</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">view</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">view</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">main_</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
             <span class="p">[</span> <span class="kt">LanguageDropdown</span><span class="o">.</span><span class="n">view</span> <span class="n">model</span>
-            <span class="p">,</span> <span class="n">content</span> <span class="n">model</span><span class="o">.</span><span class="n">translations</span>
+            <span class="o">,</span> <span class="n">content</span> <span class="n">model</span><span class="o">.</span><span class="n">translations</span>
             <span class="p">]</span>
 
 
-<span class="n">content</span> <span class="o">:</span> <span class="kt">Translations</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">content</span> <span class="p">:</span> <span class="kt">Translations</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">content</span> <span class="n">translations</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
        <span class="c1">-- ...</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">article</span> <span class="p">[</span> <span class="n">articleClasses</span> <span class="p">]</span>
             <span class="p">[</span> <span class="n">div</span> <span class="p">[</span> <span class="n">divClasses</span> <span class="p">]</span>
                 <span class="p">[</span> <span class="n">heading</span> <span class="n">translations</span> <span class="p">]</span>
             <span class="p">]</span>
 
 
-<span class="n">heading</span> <span class="o">:</span> <span class="kt">Translations</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">heading</span> <span class="p">:</span> <span class="kt">Translations</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">heading</span> <span class="n">translations</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">h1</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
-            <span class="p">[</span> <span class="n">text</span> <span class="p">(</span><span class="kt">I18Next</span><span class="o">.</span><span class="n">t</span> <span class="n">translations</span> <span class="s">"verticallyCenteringInCssIsEasy"</span><span class="p">)</span> <span class="p">]</span>
+            <span class="p">[</span> <span class="n">text</span> <span class="p">(</span><span class="kt">I18Next</span><span class="o">.</span><span class="n">t</span> <span class="n">translations</span> <span class="s">"</span><span class="s2">verticallyCenteringInCssIsEasy"</span><span class="p">)</span> <span class="p">]</span>
 </code></pre></div></div>
 
 <p>And now, when you change language, you should see the displayed message in that
@@ -1373,18 +1373,18 @@ our program type to <code class="highlighter-rouge">programWithFlags</code> to a
 
 <p><strong><code class="highlighter-rouge">src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
-<span class="kr">import</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Flags</span><span class="p">,</span> <span class="kt">Model</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<span class="k">import</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Flags</span><span class="o">,</span> <span class="kt">Model</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">main</span> <span class="o">:</span> <span class="kt">Program</span> <span class="kt">Flags</span> <span class="kt">Model</span> <span class="kt">Msg</span>
+<span class="n">main</span> <span class="p">:</span> <span class="kt">Program</span> <span class="kt">Flags</span> <span class="kt">Model</span> <span class="kt">Msg</span>
 <span class="n">main</span> <span class="o">=</span>
     <span class="kt">Html</span><span class="o">.</span><span class="n">programWithFlags</span>
         <span class="p">{</span> <span class="n">view</span> <span class="o">=</span> <span class="n">view</span>
-        <span class="p">,</span> <span class="n">init</span> <span class="o">=</span> <span class="kt">Model</span><span class="o">.</span><span class="n">init</span>
-        <span class="p">,</span> <span class="n">update</span> <span class="o">=</span> <span class="n">update</span>
-        <span class="p">,</span> <span class="n">subscriptions</span> <span class="o">=</span> <span class="n">subscriptions</span>
+        <span class="o">,</span> <span class="n">init</span> <span class="o">=</span> <span class="kt">Model</span><span class="o">.</span><span class="n">init</span>
+        <span class="o">,</span> <span class="n">update</span> <span class="o">=</span> <span class="n">update</span>
+        <span class="o">,</span> <span class="n">subscriptions</span> <span class="o">=</span> <span class="n">subscriptions</span>
         <span class="p">}</span>
 </code></pre></div></div>
 
@@ -1394,31 +1394,31 @@ decode the flag to ensure that we are getting a string.</p>
 
 <p><strong><code class="highlighter-rouge">src/Model.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Flags</span><span class="p">,</span> <span class="kt">Model</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Flags</span><span class="o">,</span> <span class="kt">Model</span><span class="o">,</span> <span class="n">init</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
-<span class="kr">import</span> <span class="nn">Json.Decode</span> <span class="k">as</span> <span class="n">Decode</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Value</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Language</span>
+<span class="k">import</span> <span class="kt">Json</span><span class="o">.</span><span class="kt">Decode</span> <span class="k">as</span> <span class="kt">Decode</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Value</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Language</span>
 
 
-<span class="kr">type</span> <span class="n">alias</span> <span class="kt">Flags</span> <span class="o">=</span>
-    <span class="p">{</span> <span class="n">language</span> <span class="o">:</span> <span class="kt">Value</span> <span class="p">}</span>
+<span class="k">type</span> <span class="k">alias</span> <span class="kt">Flags</span> <span class="o">=</span>
+    <span class="p">{</span> <span class="n">language</span> <span class="p">:</span> <span class="kt">Value</span> <span class="p">}</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">init</span> <span class="o">:</span> <span class="kt">Flags</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">init</span> <span class="p">:</span> <span class="kt">Flags</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">init</span> <span class="n">flags</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">language</span> <span class="o">=</span>
             <span class="n">flags</span><span class="o">.</span><span class="n">language</span>
                 <span class="o">|&gt;</span> <span class="kt">Decode</span><span class="o">.</span><span class="n">decodeValue</span> <span class="kt">Decode</span><span class="o">.</span><span class="n">string</span>
                 <span class="o">|&gt;</span> <span class="kt">Language</span><span class="o">.</span><span class="n">langFromFlag</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="p">(</span> <span class="p">{</span> <span class="n">currentLanguage</span> <span class="o">=</span> <span class="n">language</span>
-          <span class="p">,</span> <span class="n">showAvailableLanguages</span> <span class="o">=</span> <span class="kt">False</span>
-          <span class="p">,</span> <span class="n">translations</span> <span class="o">=</span> <span class="kt">I18Next</span><span class="o">.</span><span class="n">initialTranslations</span>
+          <span class="o">,</span> <span class="n">showAvailableLanguages</span> <span class="o">=</span> <span class="kt">False</span>
+          <span class="o">,</span> <span class="n">translations</span> <span class="o">=</span> <span class="kt">I18Next</span><span class="o">.</span><span class="n">initialTranslations</span>
           <span class="p">}</span>
-        <span class="p">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">fetchTranslations</span> <span class="n">language</span>
+        <span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">fetchTranslations</span> <span class="n">language</span>
         <span class="p">)</span>
 </code></pre></div></div>
 
@@ -1427,17 +1427,17 @@ a language if decoding goes well, and return a default language if not:</p>
 
 <p><strong><code class="highlighter-rouge">src/Language.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Language</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">availableLanguages</span><span class="p">,</span> <span class="n">langFromFlag</span><span class="p">,</span> <span class="n">langToString</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Language</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">availableLanguages</span><span class="o">,</span> <span class="n">langFromFlag</span><span class="o">,</span> <span class="n">langToString</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">langFromFlag</span> <span class="o">:</span> <span class="kt">Result</span> <span class="kt">String</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Lang</span>
+<span class="n">langFromFlag</span> <span class="p">:</span> <span class="kt">Result</span> <span class="kt">String</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Lang</span>
 <span class="n">langFromFlag</span> <span class="n">language</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">language</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">language</span> <span class="k">of</span>
         <span class="kt">Ok</span> <span class="n">language</span> <span class="o">-&gt;</span>
             <span class="kt">Translations</span><span class="o">.</span><span class="n">getLnFromCode</span> <span class="n">language</span>
 
-        <span class="kt">Err</span> <span class="kr">_</span> <span class="o">-&gt;</span>
+        <span class="kt">Err</span> <span class="n">_</span> <span class="o">-&gt;</span>
             <span class="kt">En</span>
 </code></pre></div></div>
 
@@ -1474,15 +1474,15 @@ preference in the <code class="highlighter-rouge">Cmd</code> module, changing it
 
 <p><strong><code class="highlighter-rouge">src/Cmd.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">port</span> <span class="kr">module</span> <span class="nn">Cmd</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">fetchTranslations</span><span class="p">,</span> <span class="n">storeLanguage</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">port</span> <span class="k">module</span> <span class="kt">Cmd</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">fetchTranslations</span><span class="o">,</span> <span class="n">storeLanguage</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">port</span> <span class="n">storeLanguageInLocalStorage</span> <span class="o">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="n">msg</span>
+<span class="k">port</span> <span class="n">storeLanguageInLocalStorage</span> <span class="p">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="n">msg</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">storeLanguage</span> <span class="o">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="n">msg</span>
+<span class="n">storeLanguage</span> <span class="p">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="n">msg</span>
 <span class="n">storeLanguage</span> <span class="n">language</span> <span class="o">=</span>
     <span class="n">language</span>
         <span class="o">|&gt;</span> <span class="n">toString</span>
@@ -1520,16 +1520,16 @@ message is sent), so let’s make that addition to the <code class="highlighter-
 
 <p><strong><code class="highlighter-rouge">src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="kt">ChangeLanguage</span> <span class="n">language</span> <span class="o">-&gt;</span>
             <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">currentLanguage</span> <span class="o">=</span> <span class="n">language</span> <span class="p">}</span>
-            <span class="p">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">batch</span>
+            <span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">batch</span>
                 <span class="p">[</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">fetchTranslations</span> <span class="n">language</span>
-                <span class="p">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">storeLanguage</span> <span class="n">language</span>
+                <span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">storeLanguage</span> <span class="n">language</span>
                 <span class="p">]</span>
             <span class="p">)</span>
     <span class="c1">-- ...</span>
@@ -1600,7 +1600,7 @@ in the JSON files. So, let’s give it a try.</p>
 
 <p>Install it with the following command:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install <span class="nt">-g</span> elm-i18n-gen
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> elm-i18n-gen
 </code></pre></div></div>
 
 <p>Generate a new <code class="highlighter-rouge">Translations</code> module for the app with the following command:</p>
@@ -1612,42 +1612,42 @@ in the JSON files. So, let’s give it a try.</p>
 
 <p><strong><code class="highlighter-rouge">src/Translations.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Translations</span> <span class="n">exposing</span> <span class="p">(</span><span class="o">..</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Translations</span> <span class="k">exposing</span> <span class="p">(</span><span class="o">..</span><span class="p">)</span>
 
 
-<span class="kr">type</span> <span class="kt">Lang</span>
+<span class="k">type</span> <span class="kt">Lang</span>
     <span class="o">=</span> <span class="kt">En</span>
     <span class="o">|</span> <span class="kt">It</span>
     <span class="o">|</span> <span class="kt">Ja</span>
 
 
-<span class="n">getLnFromCode</span> <span class="o">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Lang</span>
+<span class="n">getLnFromCode</span> <span class="p">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Lang</span>
 <span class="n">getLnFromCode</span> <span class="n">code</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">code</span> <span class="kr">of</span>
-        <span class="s">"en"</span> <span class="o">-&gt;</span>
+    <span class="k">case</span> <span class="n">code</span> <span class="k">of</span>
+        <span class="s">"</span><span class="s2">en"</span> <span class="o">-&gt;</span>
             <span class="kt">En</span>
 
-        <span class="s">"it"</span> <span class="o">-&gt;</span>
+        <span class="s">"</span><span class="s2">it"</span> <span class="o">-&gt;</span>
             <span class="kt">It</span>
 
-        <span class="s">"ja"</span> <span class="o">-&gt;</span>
+        <span class="s">"</span><span class="s2">ja"</span> <span class="o">-&gt;</span>
             <span class="kt">Ja</span>
 
-        <span class="kr">_</span> <span class="o">-&gt;</span>
+        <span class="n">_</span> <span class="o">-&gt;</span>
             <span class="kt">En</span>
 
 
-<span class="n">verticallyCenteringInCssIsEasy</span> <span class="o">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">String</span>
+<span class="n">verticallyCenteringInCssIsEasy</span> <span class="p">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">String</span>
 <span class="n">verticallyCenteringInCssIsEasy</span> <span class="n">lang</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">lang</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">lang</span> <span class="k">of</span>
         <span class="kt">En</span> <span class="o">-&gt;</span>
-            <span class="s">"Vertically centering things in css is easy!"</span>
+            <span class="s">"</span><span class="s2">Vertically centering things in css is easy!"</span>
 
         <span class="kt">It</span> <span class="o">-&gt;</span>
-            <span class="s">"Centrare verticalmente con css è facile!"</span>
+            <span class="s">"</span><span class="s2">Centrare verticalmente con css è facile!"</span>
 
         <span class="kt">Ja</span> <span class="o">-&gt;</span>
-            <span class="s">"CSSで垂直センタリングは簡単だよ！"</span>
+            <span class="s">"</span><span class="s2">CSSで垂直センタリングは簡単だよ！"</span>
 </code></pre></div></div>
 
 <p>We only have one translation key in our JSON files, so <code class="highlighter-rouge">elm-i18n-gen</code> created
@@ -1662,38 +1662,38 @@ jammed…).</p>
 
 <p><strong><code class="highlighter-rouge">src/Main.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
-<span class="kr">import</span> <span class="nn">Translations</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<span class="k">import</span> <span class="kt">Translations</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Lang</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">view</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">view</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">view</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">main_</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
             <span class="p">[</span> <span class="kt">LanguageDropdown</span><span class="o">.</span><span class="n">view</span> <span class="n">model</span>
-            <span class="p">,</span> <span class="n">content</span> <span class="n">model</span><span class="o">.</span><span class="n">currentLanguage</span>
+            <span class="o">,</span> <span class="n">content</span> <span class="n">model</span><span class="o">.</span><span class="n">currentLanguage</span>
             <span class="p">]</span>
 
 
-<span class="n">content</span> <span class="o">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">content</span> <span class="p">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">content</span> <span class="n">language</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">article</span> <span class="p">[</span> <span class="n">articleClasses</span> <span class="p">]</span>
             <span class="p">[</span> <span class="n">div</span> <span class="p">[</span> <span class="n">divClasses</span> <span class="p">]</span>
                 <span class="p">[</span> <span class="n">heading</span> <span class="n">language</span> <span class="p">]</span>
             <span class="p">]</span>
 
 
-<span class="n">heading</span> <span class="o">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">heading</span> <span class="p">:</span> <span class="kt">Lang</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">heading</span> <span class="n">language</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="c1">-- ...</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">h1</span> <span class="p">[</span> <span class="n">classes</span> <span class="p">]</span>
             <span class="p">[</span> <span class="n">text</span> <span class="p">(</span><span class="kt">Translations</span><span class="o">.</span><span class="n">verticallyCenteringInCssIsEasy</span> <span class="n">language</span><span class="p">)</span> <span class="p">]</span>
 </code></pre></div></div>

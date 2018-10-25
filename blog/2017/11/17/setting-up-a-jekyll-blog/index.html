@@ -434,7 +434,7 @@ by running my Jekyll server with the following command:</p>
 if you change it often, or just want a process to monitor it, install Grip
 (I use <a href="https://brew.sh/">Homebrew</a>), and run it in a separate terminal window:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install grip
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>grip
 grip <span class="nt">--browser</span>
 </code></pre></div></div>
 
@@ -473,7 +473,7 @@ linters that were actually written in front-end languages. They ended up being:<
 <p>Install the lints using <a href="https://www.npmjs.com/">npm</a>, and then make sure to update your <a href="https://en.wikipedia.org/wiki/Shim_(computing)">shims</a>
 for <a href="https://github.com/nodejs/node">Node</a> if you’re using a version manager for npm (I use <a href="https://github.com/asdf-vm/asdf">asdf</a>):</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install <span class="nt">-g</span> sass-lint htmllint-cli markdownlint-cli
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> sass-lint htmllint-cli markdownlint-cli
 asdf reshim nodejs
 </code></pre></div></div>
 
@@ -497,8 +497,8 @@ processes.</p>
 
 <p>Next, install the gems, and then generate a <code class="highlighter-rouge">Guardfile</code> for task configuration:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
-bundle <span class="nb">exec </span>guard init
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>guard init
 </code></pre></div></div>
 
 <p>Open up the <code class="highlighter-rouge">Guardfile</code> with your favourite text editor and insert the

@@ -385,13 +385,13 @@ a destination for a Bitcoin payment). The full example code from the book is as
 follows, so see if you can draw some mental lines around what code can come
 over to Elixir, and what potentially needs to stay in Python:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># key-to-address-ecc-example.py</span>
-
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># key-to-address-ecc-example.py
+</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 <span class="kn">import</span> <span class="nn">bitcoin</span>
 
-<span class="c"># Generate a random private key</span>
-<span class="n">valid_private_key</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="c1"># Generate a random private key
+</span><span class="n">valid_private_key</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">valid_private_key</span><span class="p">:</span>
     <span class="n">private_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">random_key</span><span class="p">()</span>
     <span class="n">decoded_private_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">decode_privkey</span><span class="p">(</span><span class="n">private_key</span><span class="p">,</span> <span class="s">'hex'</span><span class="p">)</span>
@@ -400,38 +400,38 @@ over to Elixir, and what potentially needs to stay in Python:</p>
 <span class="k">print</span><span class="p">(</span><span class="s">"Private Key (hex) is: "</span><span class="p">,</span> <span class="n">private_key</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Private Key (decimal) is: "</span><span class="p">,</span> <span class="n">decoded_private_key</span><span class="p">)</span>
 
-<span class="c"># Convert private key to WIF format</span>
-<span class="n">wif_encoded_private_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">encode_privkey</span><span class="p">(</span><span class="n">decoded_private_key</span><span class="p">,</span> <span class="s">'wif'</span><span class="p">)</span>
+<span class="c1"># Convert private key to WIF format
+</span><span class="n">wif_encoded_private_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">encode_privkey</span><span class="p">(</span><span class="n">decoded_private_key</span><span class="p">,</span> <span class="s">'wif'</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Private Key (WIF) is: "</span><span class="p">,</span> <span class="n">wif_encoded_private_key</span><span class="p">)</span>
 
-<span class="c"># Add suffix "01" to indicate a compressed private key</span>
-<span class="n">compressed_private_key</span> <span class="o">=</span> <span class="n">private_key</span> <span class="o">+</span> <span class="s">'01'</span>
+<span class="c1"># Add suffix "01" to indicate a compressed private key
+</span><span class="n">compressed_private_key</span> <span class="o">=</span> <span class="n">private_key</span> <span class="o">+</span> <span class="s">'01'</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Private Key Compressed (hex) is: "</span><span class="p">,</span> <span class="n">compressed_private_key</span><span class="p">)</span>
 
-<span class="c"># Generate a WIF format from the compressed private key (WIF-compressed)</span>
-<span class="n">wif_compressed_private_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">encode_privkey</span><span class="p">(</span>
+<span class="c1"># Generate a WIF format from the compressed private key (WIF-compressed)
+</span><span class="n">wif_compressed_private_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">encode_privkey</span><span class="p">(</span>
     <span class="n">bitcoin</span><span class="o">.</span><span class="n">decode_privkey</span><span class="p">(</span><span class="n">compressed_private_key</span><span class="p">,</span> <span class="s">'hex'</span><span class="p">),</span> <span class="s">'wif'</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Private Key (WIF-Compressed) is: "</span><span class="p">,</span> <span class="n">wif_compressed_private_key</span><span class="p">)</span>
 
-<span class="c"># Multiply the EC generator point G with the private key to get a public key point</span>
-<span class="n">public_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">fast_multiply</span><span class="p">(</span><span class="n">bitcoin</span><span class="o">.</span><span class="n">G</span><span class="p">,</span> <span class="n">decoded_private_key</span><span class="p">)</span>
+<span class="c1"># Multiply the EC generator point G with the private key to get a public key point
+</span><span class="n">public_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">fast_multiply</span><span class="p">(</span><span class="n">bitcoin</span><span class="o">.</span><span class="n">G</span><span class="p">,</span> <span class="n">decoded_private_key</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Public Key (x,y) coordinates is:"</span><span class="p">,</span> <span class="n">public_key</span><span class="p">)</span>
 
-<span class="c"># Encode as hex, prefix 04</span>
-<span class="n">hex_encoded_public_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">encode_pubkey</span><span class="p">(</span><span class="n">public_key</span><span class="p">,</span> <span class="s">'hex'</span><span class="p">)</span>
+<span class="c1"># Encode as hex, prefix 04
+</span><span class="n">hex_encoded_public_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">encode_pubkey</span><span class="p">(</span><span class="n">public_key</span><span class="p">,</span> <span class="s">'hex'</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Public Key (hex) is:"</span><span class="p">,</span> <span class="n">hex_encoded_public_key</span><span class="p">)</span>
 
-<span class="c"># Compress public key, adjust prefix depending on whether y is even or odd</span>
-<span class="p">(</span><span class="n">public_key_x</span><span class="p">,</span> <span class="n">public_key_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">public_key</span>
+<span class="c1"># Compress public key, adjust prefix depending on whether y is even or odd
+</span><span class="p">(</span><span class="n">public_key_x</span><span class="p">,</span> <span class="n">public_key_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">public_key</span>
 <span class="n">compressed_prefix</span> <span class="o">=</span> <span class="s">'02'</span> <span class="k">if</span> <span class="p">(</span><span class="n">public_key_y</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s">'03'</span>
 <span class="n">hex_compressed_public_key</span> <span class="o">=</span> <span class="n">compressed_prefix</span> <span class="o">+</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">public_key_x</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Compressed Public Key (hex) is:"</span><span class="p">,</span> <span class="n">hex_compressed_public_key</span><span class="p">)</span>
 
-<span class="c"># Generate bitcoin address from public key</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Bitcoin Address (b58check) is:"</span><span class="p">,</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">pubkey_to_address</span><span class="p">(</span><span class="n">public_key</span><span class="p">))</span>
+<span class="c1"># Generate bitcoin address from public key
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Bitcoin Address (b58check) is:"</span><span class="p">,</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">pubkey_to_address</span><span class="p">(</span><span class="n">public_key</span><span class="p">))</span>
 
-<span class="c"># Generate compressed bitcoin address from compressed public key</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Compressed Bitcoin Address (b58check) is:"</span><span class="p">,</span>
+<span class="c1"># Generate compressed bitcoin address from compressed public key
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Compressed Bitcoin Address (b58check) is:"</span><span class="p">,</span>
       <span class="n">bitcoin</span><span class="o">.</span><span class="n">pubkey_to_address</span><span class="p">(</span><span class="n">hex_compressed_public_key</span><span class="p">))</span>
 </code></pre></div></div>
 
@@ -592,8 +592,8 @@ rescue here again), so it looks like we need to write a Python-side wrapper
 method that will parse Erlang strings before passing them through as parameters
 to <code class="highlighter-rouge">bitcoin.decode_privkey</code>, so let’s do that:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># key-to-address-ecc-example.py</span>
-
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># key-to-address-ecc-example.py
+</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 <span class="kn">import</span> <span class="nn">bitcoin</span>
 
@@ -601,8 +601,8 @@ to <code class="highlighter-rouge">bitcoin.decode_privkey</code>, so let’s do 
   <span class="n">decoder</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
   <span class="k">return</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">decode_privkey</span><span class="p">(</span><span class="n">private_key</span><span class="p">,</span> <span class="n">decoder</span><span class="p">)</span>
 
-<span class="c"># ... the rest of the code ...</span>
-</code></pre></div></div>
+<span class="c1"># ... the rest of the code ...
+</span></code></pre></div></div>
 
 <p>Here, we’re using Python’s <a href="https://docs.python.org/3/library/stdtypes.html#bytes.decode"><code class="highlighter-rouge">bytes.decode()</code></a> method
 to return a UTF-8 encoded string from the bytes contained in the <code class="highlighter-rouge">decoder</code>
@@ -711,8 +711,8 @@ part of the original Python code:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 <span class="kn">import</span> <span class="nn">bitcoin</span>
 
-<span class="c"># Generate a random private key</span>
-<span class="n">valid_private_key</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="c1"># Generate a random private key
+</span><span class="n">valid_private_key</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">valid_private_key</span><span class="p">:</span>
     <span class="n">private_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">random_key</span><span class="p">()</span>
     <span class="n">decoded_private_key</span> <span class="o">=</span> <span class="n">bitcoin</span><span class="o">.</span><span class="n">decode_privkey</span><span class="p">(</span><span class="n">private_key</span><span class="p">,</span> <span class="s">'hex'</span><span class="p">)</span>

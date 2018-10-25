@@ -432,8 +432,8 @@ the left side of an Ergodox keyboard:</p>
 
 <p><strong><code class="highlighter-rouge">qmk_firmware/keyboards/ergodox_ez/keymaps/default/keymap.c</code></strong></p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...
-</span><span class="cm">/* Keymap 0: Basic layer
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+<span class="cm">/* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.
  * |   =    |   1  |   2  |   3  |   4  |   5  | LEFT |
@@ -454,9 +454,9 @@ the left side of an Ergodox keyboard:</p>
  *                                 |      |ace   | End  |
  *                                 `--------------------'
  */</span>
-<span class="p">[</span><span class="n">BASE</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 0 : default
-</span>  <span class="c1">// left hand
-</span>  <span class="n">KC_EQL</span><span class="p">,</span>          <span class="n">KC_1</span><span class="p">,</span>        <span class="n">KC_2</span><span class="p">,</span>          <span class="n">KC_3</span><span class="p">,</span>    <span class="n">KC_4</span><span class="p">,</span>    <span class="n">KC_5</span><span class="p">,</span> <span class="n">KC_LEFT</span><span class="p">,</span>
+<span class="p">[</span><span class="n">BASE</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 0 : default</span>
+  <span class="c1">// left hand</span>
+  <span class="n">KC_EQL</span><span class="p">,</span>          <span class="n">KC_1</span><span class="p">,</span>        <span class="n">KC_2</span><span class="p">,</span>          <span class="n">KC_3</span><span class="p">,</span>    <span class="n">KC_4</span><span class="p">,</span>    <span class="n">KC_5</span><span class="p">,</span> <span class="n">KC_LEFT</span><span class="p">,</span>
   <span class="n">KC_DELT</span><span class="p">,</span>         <span class="n">KC_Q</span><span class="p">,</span>        <span class="n">KC_W</span><span class="p">,</span>          <span class="n">KC_E</span><span class="p">,</span>    <span class="n">KC_R</span><span class="p">,</span>    <span class="n">KC_T</span><span class="p">,</span> <span class="n">TG</span><span class="p">(</span><span class="n">SYMB</span><span class="p">),</span>
   <span class="n">KC_BSPC</span><span class="p">,</span>         <span class="n">KC_A</span><span class="p">,</span>        <span class="n">KC_S</span><span class="p">,</span>          <span class="n">KC_D</span><span class="p">,</span>    <span class="n">KC_F</span><span class="p">,</span>    <span class="n">KC_G</span><span class="p">,</span>
   <span class="n">KC_LSFT</span><span class="p">,</span>         <span class="n">CTL_T</span><span class="p">(</span><span class="n">KC_Z</span><span class="p">),</span> <span class="n">KC_X</span><span class="p">,</span>          <span class="n">KC_C</span><span class="p">,</span>    <span class="n">KC_V</span><span class="p">,</span>    <span class="n">KC_B</span><span class="p">,</span> <span class="n">ALL_T</span><span class="p">(</span><span class="n">KC_NO</span><span class="p">),</span>
@@ -464,8 +464,8 @@ the left side of an Ergodox keyboard:</p>
                                                         <span class="n">ALT_T</span><span class="p">(</span><span class="n">KC_APP</span><span class="p">),</span> <span class="n">KC_LGUI</span><span class="p">,</span>
                                                                        <span class="n">KC_HOME</span><span class="p">,</span>
                                                <span class="n">KC_SPC</span><span class="p">,</span>  <span class="n">KC_BSPC</span><span class="p">,</span>       <span class="n">KC_END</span><span class="p">,</span>
-  <span class="c1">// ..
-</span><span class="p">)</span>
+  <span class="c1">// ..</span>
+<span class="p">)</span>
 </code></pre></div></div>
 
 <p>Here, we can see:</p>
@@ -497,7 +497,7 @@ supposed to actually do? Well, there are three main steps for this, but before
 we do them, let’s create a copy of the default keymap folder, put it into a
 <code class="highlighter-rouge">custom</code> directory, and make our edits on that:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp <span class="nt">-r</span> qmk_firmware/keyboards/ergodox_ez/keymaps/default qmk_firmware/keyboards/ergodox_ez/keymaps/custom
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">-r</span> qmk_firmware/keyboards/ergodox_ez/keymaps/default qmk_firmware/keyboards/ergodox_ez/keymaps/custom
 </code></pre></div></div>
 
 <p>First, we need to add a new <code class="highlighter-rouge">MY_KEY_COMBO</code> type to the existing
@@ -507,19 +507,19 @@ the keymap file:</p>
 <p><strong><code class="highlighter-rouge">qmk_firmware/keyboards/ergodox_ez/keymaps/custom/keymap.c</code></strong></p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">enum</span> <span class="n">custom_keycodes</span> <span class="p">{</span>
-  <span class="c1">// ...
-</span>  <span class="n">MY_KEY_COMBO</span>
+  <span class="c1">// ...</span>
+  <span class="n">MY_KEY_COMBO</span>
 <span class="p">};</span>
 </code></pre></div></div>
 
 <p>Now, we can replace <code class="highlighter-rouge">KC_EQL</code> with <code class="highlighter-rouge">MY_KEY_COMBO</code> in the keyboard layout:</p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...
-</span><span class="p">[</span><span class="n">BASE</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 0 : default
-</span>  <span class="c1">// left hand
-</span>  <span class="n">MY_KEY_COMBO</span><span class="p">,</span> <span class="n">KC_1</span><span class="p">,</span> <span class="n">KC_2</span><span class="p">,</span> <span class="n">KC_3</span><span class="p">,</span> <span class="n">KC_4</span><span class="p">,</span> <span class="n">KC_5</span><span class="p">,</span> <span class="n">KC_LEFT</span><span class="p">,</span>
-  <span class="c1">// ...
-</span></code></pre></div></div>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+<span class="p">[</span><span class="n">BASE</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 0 : default</span>
+  <span class="c1">// left hand</span>
+  <span class="n">MY_KEY_COMBO</span><span class="p">,</span> <span class="n">KC_1</span><span class="p">,</span> <span class="n">KC_2</span><span class="p">,</span> <span class="n">KC_3</span><span class="p">,</span> <span class="n">KC_4</span><span class="p">,</span> <span class="n">KC_5</span><span class="p">,</span> <span class="n">KC_LEFT</span><span class="p">,</span>
+  <span class="c1">// ...</span>
+</code></pre></div></div>
 
 <p>To give this new type some behaviour, we need to register it inside a function
 called <code class="highlighter-rouge">process_record_user()</code>, which can be found towards the bottom of the
@@ -529,12 +529,12 @@ keymap file:</p>
   <span class="k">switch</span> <span class="p">(</span><span class="n">keycode</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">case</span> <span class="n">MY_KEY_COMBO</span><span class="p">:</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">record</span><span class="o">-&gt;</span><span class="n">event</span><span class="p">.</span><span class="n">pressed</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Do whatever it is that MY_KEY_COMBO is supposed to do when pressed
-</span>      <span class="p">}</span>
+        <span class="c1">// Do whatever it is that MY_KEY_COMBO is supposed to do when pressed</span>
+      <span class="p">}</span>
       <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
       <span class="k">break</span><span class="p">;</span>
-    <span class="c1">// other case statements ...
-</span>  <span class="p">}</span>
+    <span class="c1">// other case statements ...</span>
+  <span class="p">}</span>
   <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -601,8 +601,8 @@ before, first add the new types:</p>
 <p><strong><code class="highlighter-rouge">qmk_firmware/keyboards/ergodox_ez/keymaps/custom/keymap.c</code></strong></p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">enum</span> <span class="n">custom_keycodes</span> <span class="p">{</span>
-  <span class="c1">// ...
-</span>  <span class="n">FORWARD_PIPE</span>
+  <span class="c1">// ...</span>
+  <span class="n">FORWARD_PIPE</span>
   <span class="n">LEFT_ERB</span>
   <span class="n">PLUS_ONE</span>
   <span class="n">RIGHT_ERB</span>
@@ -612,12 +612,12 @@ before, first add the new types:</p>
 <p>Assign the types to some keys (these key locations are illustrative only, you
 probably don’t <em>actually</em> want these keys at the top left of the board):</p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...
-</span><span class="p">[</span><span class="n">BASE</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 0 : default
-</span>  <span class="c1">// left hand
-</span>  <span class="n">FORWARD_PIPE</span><span class="p">,</span> <span class="n">LEFT_ERB</span><span class="p">,</span> <span class="n">PLUS_ONE</span><span class="p">,</span> <span class="n">RIGHT_ERB</span><span class="p">,</span> <span class="n">KC_4</span><span class="p">,</span> <span class="n">KC_5</span><span class="p">,</span> <span class="n">KC_LEFT</span><span class="p">,</span>
-  <span class="c1">// ...
-</span></code></pre></div></div>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+<span class="p">[</span><span class="n">BASE</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 0 : default</span>
+  <span class="c1">// left hand</span>
+  <span class="n">FORWARD_PIPE</span><span class="p">,</span> <span class="n">LEFT_ERB</span><span class="p">,</span> <span class="n">PLUS_ONE</span><span class="p">,</span> <span class="n">RIGHT_ERB</span><span class="p">,</span> <span class="n">KC_4</span><span class="p">,</span> <span class="n">KC_5</span><span class="p">,</span> <span class="n">KC_LEFT</span><span class="p">,</span>
+  <span class="c1">// ...</span>
+</code></pre></div></div>
 
 <p>And now, let’s use the <code class="highlighter-rouge">SEND_STRING</code> <a href="https://docs.qmk.fm/#/feature_macros">Feature Macro</a> to type out the strings:</p>
 
@@ -658,8 +658,8 @@ this:</p>
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bool</span> <span class="nf">process_record_user</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">keycode</span><span class="p">,</span> <span class="n">keyrecord_t</span> <span class="o">*</span><span class="n">record</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">record</span><span class="o">-&gt;</span><span class="n">event</span><span class="p">.</span><span class="n">pressed</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">switch</span> <span class="p">(</span><span class="n">keycode</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// ...
-</span>      <span class="k">case</span> <span class="n">LEFT_PANE</span><span class="p">:</span>
+      <span class="c1">// ...</span>
+      <span class="k">case</span> <span class="n">LEFT_PANE</span><span class="p">:</span>
         <span class="n">SEND_STRING</span><span class="p">(</span><span class="n">SS_DOWN</span><span class="p">(</span><span class="n">X_LALT</span><span class="p">)</span><span class="n">SS_DOWN</span><span class="p">(</span><span class="n">X_LGUI</span><span class="p">));</span>
         <span class="n">SEND_STRING</span><span class="p">(</span><span class="n">SS_TAP</span><span class="p">(</span><span class="n">X_LEFT</span><span class="p">));</span>
         <span class="n">SEND_STRING</span><span class="p">(</span><span class="n">SS_UP</span><span class="p">(</span><span class="n">X_LGUI</span><span class="p">)</span><span class="n">SS_UP</span><span class="p">(</span><span class="n">X_LALT</span><span class="p">));</span>

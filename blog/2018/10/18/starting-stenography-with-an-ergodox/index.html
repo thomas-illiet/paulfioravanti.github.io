@@ -417,7 +417,7 @@ keymaps directory into a new directory that we will call <code class="highlighte
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:qmk/qmk_firmware.git
 <span class="nb">cd </span>qmk_firmware
-cp <span class="nt">-r</span> keyboards/ergodox_ez/keymaps/default keyboards/ergodox_ez/keymaps/default_steno
+<span class="nb">cp</span> <span class="nt">-r</span> keyboards/ergodox_ez/keymaps/default keyboards/ergodox_ez/keymaps/default_steno
 </code></pre></div></div>
 
 <blockquote>
@@ -465,7 +465,7 @@ to tell the firmware to enable it by default.</p>
 
 <p><strong><code class="highlighter-rouge">qmk_firmware/keyboards/ergodox_ez/keymaps/default_steno/rules.mk</code></strong></p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FORCE_NKRO <span class="o">=</span> yes
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FORCE_NKRO <span class="o">=</span> <span class="nb">yes</span>
 </code></pre></div></div>
 
 <p><strong><code class="highlighter-rouge">qmk_firmware/keyboards/ergodox_ez/keymaps/default_steno/config.h</code></strong></p>
@@ -500,17 +500,17 @@ which we will call <code class="highlighter-rouge">STEN</code>.</p>
 
 <p><strong><code class="highlighter-rouge">qmk_firmware/keyboards/ergodox_ez/keymaps/default_steno/keymap.c</code></strong></p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...
-</span><span class="cp">#define BASE 0 // default layer
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+<span class="cp">#define BASE 0 // default layer
 #define SYMB 1 // symbols
 #define MDIA 2 // media keys
 #define STEN 3 // Stenography
 </span>
-<span class="c1">// Helper to make keymaps a bit easier to read at a glance
-</span><span class="cp">#define _x_ KC_NO
+<span class="c1">// Helper to make keymaps a bit easier to read at a glance</span>
+<span class="cp">#define _x_ KC_NO
 </span>
-<span class="c1">// ...
-</span><span class="k">const</span> <span class="kt">uint16_t</span> <span class="n">PROGMEM</span> <span class="n">keymaps</span><span class="p">[][</span><span class="n">MATRIX_ROWS</span><span class="p">][</span><span class="n">MATRIX_COLS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="c1">// ...</span>
+<span class="k">const</span> <span class="kt">uint16_t</span> <span class="n">PROGMEM</span> <span class="n">keymaps</span><span class="p">[][</span><span class="n">MATRIX_ROWS</span><span class="p">][</span><span class="n">MATRIX_COLS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="cm">/* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------. ...
@@ -518,19 +518,19 @@ which we will call <code class="highlighter-rouge">STEN</code>.</p>
  * |--------+------+------+------+------+-------------| ...
  * ...
  */</span>
-<span class="p">[</span><span class="n">BASE</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 0 : default
-</span>  <span class="c1">// left hand
-</span>  <span class="n">KC_EQL</span><span class="p">,</span> <span class="n">KC_1</span><span class="p">,</span> <span class="n">KC_2</span><span class="p">,</span> <span class="n">KC_3</span><span class="p">,</span> <span class="n">KC_4</span><span class="p">,</span> <span class="n">KC_5</span><span class="p">,</span> <span class="n">TG</span><span class="p">(</span><span class="n">STEN</span><span class="p">),</span>
-  <span class="c1">// ...
-</span><span class="p">),</span>
-<span class="c1">// ...
-</span><span class="p">[</span><span class="n">SYMB</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>
-  <span class="c1">// ...
-</span><span class="p">),</span>
-<span class="c1">// ...
-</span><span class="p">[</span><span class="n">MDIA</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>
-  <span class="c1">// ...
-</span><span class="p">),</span>
+<span class="p">[</span><span class="n">BASE</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 0 : default</span>
+  <span class="c1">// left hand</span>
+  <span class="n">KC_EQL</span><span class="p">,</span> <span class="n">KC_1</span><span class="p">,</span> <span class="n">KC_2</span><span class="p">,</span> <span class="n">KC_3</span><span class="p">,</span> <span class="n">KC_4</span><span class="p">,</span> <span class="n">KC_5</span><span class="p">,</span> <span class="n">TG</span><span class="p">(</span><span class="n">STEN</span><span class="p">),</span>
+  <span class="c1">// ...</span>
+<span class="p">),</span>
+<span class="c1">// ...</span>
+<span class="p">[</span><span class="n">SYMB</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>
+  <span class="c1">// ...</span>
+<span class="p">),</span>
+<span class="c1">// ...</span>
+<span class="p">[</span><span class="n">MDIA</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>
+  <span class="c1">// ...</span>
+<span class="p">),</span>
 <span class="cm">/* Keymap 3: Modified QWERTY for Stenography
  *
  * ,--------------------------------------------------.  ,--------------------------------------------------.
@@ -552,9 +552,9 @@ which we will call <code class="highlighter-rouge">STEN</code>.</p>
  *                               |      |      |      |  |      |      |      |
  *                               `--------------------'  `--------------------'
  */</span>
-<span class="p">[</span><span class="n">STEN</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 3 : Modified QWERTY for Stenography
-</span>  <span class="c1">// left hand
-</span>  <span class="n">_x_</span><span class="p">,</span> <span class="n">KC_1</span><span class="p">,</span> <span class="n">KC_2</span><span class="p">,</span> <span class="n">KC_3</span><span class="p">,</span> <span class="n">KC_4</span><span class="p">,</span> <span class="n">KC_5</span><span class="p">,</span> <span class="n">TG</span><span class="p">(</span><span class="n">STEN</span><span class="p">),</span>
+<span class="p">[</span><span class="n">STEN</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 3 : Modified QWERTY for Stenography</span>
+  <span class="c1">// left hand</span>
+  <span class="n">_x_</span><span class="p">,</span> <span class="n">KC_1</span><span class="p">,</span> <span class="n">KC_2</span><span class="p">,</span> <span class="n">KC_3</span><span class="p">,</span> <span class="n">KC_4</span><span class="p">,</span> <span class="n">KC_5</span><span class="p">,</span> <span class="n">TG</span><span class="p">(</span><span class="n">STEN</span><span class="p">),</span>
   <span class="n">_x_</span><span class="p">,</span> <span class="n">KC_Q</span><span class="p">,</span> <span class="n">KC_W</span><span class="p">,</span> <span class="n">KC_E</span><span class="p">,</span> <span class="n">KC_R</span><span class="p">,</span> <span class="n">KC_T</span><span class="p">,</span> <span class="n">_x_</span><span class="p">,</span>
   <span class="n">_x_</span><span class="p">,</span> <span class="n">KC_A</span><span class="p">,</span> <span class="n">KC_S</span><span class="p">,</span> <span class="n">KC_D</span><span class="p">,</span> <span class="n">KC_F</span><span class="p">,</span> <span class="n">KC_G</span><span class="p">,</span>
   <span class="n">_x_</span><span class="p">,</span> <span class="n">_x_</span><span class="p">,</span>  <span class="n">_x_</span><span class="p">,</span>  <span class="n">_x_</span><span class="p">,</span>  <span class="n">_x_</span><span class="p">,</span>  <span class="n">_x_</span><span class="p">,</span>  <span class="n">_x_</span><span class="p">,</span>
@@ -562,8 +562,8 @@ which we will call <code class="highlighter-rouge">STEN</code>.</p>
                                <span class="n">_x_</span><span class="p">,</span>  <span class="n">_x_</span><span class="p">,</span>
                                      <span class="n">_x_</span><span class="p">,</span>
                          <span class="n">KC_C</span><span class="p">,</span> <span class="n">KC_V</span><span class="p">,</span> <span class="n">_x_</span><span class="p">,</span>
-  <span class="c1">// right hand
-</span>  <span class="n">_x_</span><span class="p">,</span> <span class="n">KC_6</span><span class="p">,</span> <span class="n">KC_7</span><span class="p">,</span> <span class="n">KC_8</span><span class="p">,</span> <span class="n">KC_9</span><span class="p">,</span> <span class="n">KC_0</span><span class="p">,</span>    <span class="n">_x_</span><span class="p">,</span>
+  <span class="c1">// right hand</span>
+  <span class="n">_x_</span><span class="p">,</span> <span class="n">KC_6</span><span class="p">,</span> <span class="n">KC_7</span><span class="p">,</span> <span class="n">KC_8</span><span class="p">,</span> <span class="n">KC_9</span><span class="p">,</span> <span class="n">KC_0</span><span class="p">,</span>    <span class="n">_x_</span><span class="p">,</span>
   <span class="n">_x_</span><span class="p">,</span> <span class="n">KC_Y</span><span class="p">,</span> <span class="n">KC_U</span><span class="p">,</span> <span class="n">KC_I</span><span class="p">,</span> <span class="n">KC_O</span><span class="p">,</span> <span class="n">KC_P</span><span class="p">,</span>    <span class="n">KC_LBRC</span><span class="p">,</span>
        <span class="n">KC_H</span><span class="p">,</span> <span class="n">KC_J</span><span class="p">,</span> <span class="n">KC_K</span><span class="p">,</span> <span class="n">KC_L</span><span class="p">,</span> <span class="n">KC_SCLN</span><span class="p">,</span> <span class="n">KC_QUOT</span><span class="p">,</span>
   <span class="n">_x_</span><span class="p">,</span> <span class="n">_x_</span><span class="p">,</span>  <span class="n">_x_</span><span class="p">,</span>  <span class="n">_x_</span><span class="p">,</span>  <span class="n">_x_</span><span class="p">,</span>  <span class="n">_x_</span><span class="p">,</span>     <span class="n">_x_</span><span class="p">,</span>
@@ -573,8 +573,8 @@ which we will call <code class="highlighter-rouge">STEN</code>.</p>
   <span class="n">_x_</span><span class="p">,</span> <span class="n">KC_N</span><span class="p">,</span> <span class="n">KC_M</span>
 <span class="p">)</span>
 <span class="p">};</span>
-<span class="c1">// ...
-</span></code></pre></div></div>
+<span class="c1">// ...</span>
+</code></pre></div></div>
 
 <p>Next, generate the firmware from the <code class="highlighter-rouge">qmk_firmware</code> directory root path:</p>
 
@@ -656,19 +656,19 @@ character key presses. So, back to the text editor!</p>
 
 <p><strong><code class="highlighter-rouge">qmk_firmware/keyboards/ergodox_ez/keymaps/default_steno/keymap.c</code></strong></p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...
-</span><span class="cp">#include "keymap_steno.h"
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+<span class="cp">#include "keymap_steno.h"
 </span>
 <span class="cp">#define BASE 0 // default layer
 #define SYMB 1 // symbols
 #define MDIA 2 // media keys
 #define STEN 3 // Stenography
 </span>
-<span class="c1">// Helper to make keymaps a bit easier to read at a glance
-</span><span class="cp">#define _x_ KC_NO
+<span class="c1">// Helper to make keymaps a bit easier to read at a glance</span>
+<span class="cp">#define _x_ KC_NO
 </span>
-<span class="c1">// ...
-</span><span class="k">const</span> <span class="kt">uint16_t</span> <span class="n">PROGMEM</span> <span class="n">keymaps</span><span class="p">[][</span><span class="n">MATRIX_ROWS</span><span class="p">][</span><span class="n">MATRIX_COLS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="c1">// ...</span>
+<span class="k">const</span> <span class="kt">uint16_t</span> <span class="n">PROGMEM</span> <span class="n">keymaps</span><span class="p">[][</span><span class="n">MATRIX_ROWS</span><span class="p">][</span><span class="n">MATRIX_COLS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="cm">/* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------. ...
@@ -676,19 +676,19 @@ character key presses. So, back to the text editor!</p>
  * |--------+------+------+------+------+-------------| ...
  * ...
  */</span>
-<span class="p">[</span><span class="n">BASE</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 0 : default
-</span>  <span class="c1">// left hand
-</span>  <span class="n">KC_EQL</span><span class="p">,</span> <span class="n">KC_1</span><span class="p">,</span> <span class="n">KC_2</span><span class="p">,</span> <span class="n">KC_3</span><span class="p">,</span> <span class="n">KC_4</span><span class="p">,</span> <span class="n">KC_5</span><span class="p">,</span> <span class="n">TG</span><span class="p">(</span><span class="n">STEN</span><span class="p">),</span>
-  <span class="c1">// ...
-</span><span class="p">),</span>
-<span class="c1">// ...
-</span><span class="p">[</span><span class="n">SYMB</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>
-  <span class="c1">// ...
-</span><span class="p">),</span>
-<span class="c1">// ...
-</span><span class="p">[</span><span class="n">MDIA</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>
-  <span class="c1">// ...
-</span><span class="p">),</span>
+<span class="p">[</span><span class="n">BASE</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 0 : default</span>
+  <span class="c1">// left hand</span>
+  <span class="n">KC_EQL</span><span class="p">,</span> <span class="n">KC_1</span><span class="p">,</span> <span class="n">KC_2</span><span class="p">,</span> <span class="n">KC_3</span><span class="p">,</span> <span class="n">KC_4</span><span class="p">,</span> <span class="n">KC_5</span><span class="p">,</span> <span class="n">TG</span><span class="p">(</span><span class="n">STEN</span><span class="p">),</span>
+  <span class="c1">// ...</span>
+<span class="p">),</span>
+<span class="c1">// ...</span>
+<span class="p">[</span><span class="n">SYMB</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>
+  <span class="c1">// ...</span>
+<span class="p">),</span>
+<span class="c1">// ...</span>
+<span class="p">[</span><span class="n">MDIA</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>
+  <span class="c1">// ...</span>
+<span class="p">),</span>
 <span class="cm">/* Keymap 3: Stenography
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -710,9 +710,9 @@ character key presses. So, back to the text editor!</p>
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */</span>
-<span class="p">[</span><span class="n">STEN</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 3 : Stenography
-</span>    <span class="c1">// left hand
-</span>    <span class="n">_x_</span><span class="p">,</span> <span class="n">STN_N1</span><span class="p">,</span> <span class="n">STN_N2</span><span class="p">,</span> <span class="n">STN_N3</span><span class="p">,</span> <span class="n">STN_N4</span><span class="p">,</span> <span class="n">STN_N5</span><span class="p">,</span>  <span class="n">TG</span><span class="p">(</span><span class="n">STEN</span><span class="p">),</span>
+<span class="p">[</span><span class="n">STEN</span><span class="p">]</span> <span class="o">=</span> <span class="n">LAYOUT_ergodox</span><span class="p">(</span>  <span class="c1">// layer 3 : Stenography</span>
+    <span class="c1">// left hand</span>
+    <span class="n">_x_</span><span class="p">,</span> <span class="n">STN_N1</span><span class="p">,</span> <span class="n">STN_N2</span><span class="p">,</span> <span class="n">STN_N3</span><span class="p">,</span> <span class="n">STN_N4</span><span class="p">,</span> <span class="n">STN_N5</span><span class="p">,</span>  <span class="n">TG</span><span class="p">(</span><span class="n">STEN</span><span class="p">),</span>
     <span class="n">_x_</span><span class="p">,</span> <span class="n">STN_S1</span><span class="p">,</span> <span class="n">STN_TL</span><span class="p">,</span> <span class="n">STN_PL</span><span class="p">,</span> <span class="n">STN_HL</span><span class="p">,</span> <span class="n">STN_ST1</span><span class="p">,</span> <span class="n">_x_</span><span class="p">,</span>
     <span class="n">_x_</span><span class="p">,</span> <span class="n">STN_S2</span><span class="p">,</span> <span class="n">STN_KL</span><span class="p">,</span> <span class="n">STN_WL</span><span class="p">,</span> <span class="n">STN_RL</span><span class="p">,</span> <span class="n">STN_ST2</span><span class="p">,</span>
     <span class="n">_x_</span><span class="p">,</span> <span class="n">_x_</span><span class="p">,</span>    <span class="n">_x_</span><span class="p">,</span>    <span class="n">_x_</span><span class="p">,</span>    <span class="n">_x_</span><span class="p">,</span>    <span class="n">_x_</span><span class="p">,</span>     <span class="n">_x_</span><span class="p">,</span>
@@ -720,8 +720,8 @@ character key presses. So, back to the text editor!</p>
                                          <span class="n">_x_</span><span class="p">,</span>     <span class="n">_x_</span><span class="p">,</span>
                                                   <span class="n">_x_</span><span class="p">,</span>
                                  <span class="n">STN_A</span><span class="p">,</span>  <span class="n">STN_O</span><span class="p">,</span>   <span class="n">_x_</span><span class="p">,</span>
-  <span class="c1">// right hand
-</span>  <span class="n">_x_</span><span class="p">,</span> <span class="n">STN_N6</span><span class="p">,</span>  <span class="n">STN_N7</span><span class="p">,</span> <span class="n">STN_N8</span><span class="p">,</span> <span class="n">STN_N9</span><span class="p">,</span> <span class="n">STN_NA</span><span class="p">,</span> <span class="n">STN_NB</span><span class="p">,</span>
+  <span class="c1">// right hand</span>
+  <span class="n">_x_</span><span class="p">,</span> <span class="n">STN_N6</span><span class="p">,</span>  <span class="n">STN_N7</span><span class="p">,</span> <span class="n">STN_N8</span><span class="p">,</span> <span class="n">STN_N9</span><span class="p">,</span> <span class="n">STN_NA</span><span class="p">,</span> <span class="n">STN_NB</span><span class="p">,</span>
   <span class="n">_x_</span><span class="p">,</span> <span class="n">STN_ST3</span><span class="p">,</span> <span class="n">STN_FR</span><span class="p">,</span> <span class="n">STN_PR</span><span class="p">,</span> <span class="n">STN_LR</span><span class="p">,</span> <span class="n">STN_TR</span><span class="p">,</span> <span class="n">STN_DR</span><span class="p">,</span>
        <span class="n">STN_ST4</span><span class="p">,</span> <span class="n">STN_RR</span><span class="p">,</span> <span class="n">STN_BR</span><span class="p">,</span> <span class="n">STN_GR</span><span class="p">,</span> <span class="n">STN_SR</span><span class="p">,</span> <span class="n">STN_ZR</span><span class="p">,</span>
   <span class="n">_x_</span><span class="p">,</span> <span class="n">_x_</span><span class="p">,</span>     <span class="n">_x_</span><span class="p">,</span>    <span class="n">_x_</span><span class="p">,</span>    <span class="n">_x_</span><span class="p">,</span>    <span class="n">_x_</span><span class="p">,</span>    <span class="n">_x_</span><span class="p">,</span>
@@ -731,12 +731,12 @@ character key presses. So, back to the text editor!</p>
   <span class="n">_x_</span><span class="p">,</span> <span class="n">STN_E</span><span class="p">,</span>   <span class="n">STN_U</span>
 <span class="p">)</span>
 
-<span class="c1">// ...
-</span>
-<span class="c1">// Runs just one time when the keyboard initializes.
-</span><span class="kt">void</span> <span class="n">matrix_init_user</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// ...
-</span>  <span class="n">steno_set_mode</span><span class="p">(</span><span class="n">STENO_MODE_GEMINI</span><span class="p">);</span>
+<span class="c1">// ...</span>
+
+<span class="c1">// Runs just one time when the keyboard initializes.</span>
+<span class="kt">void</span> <span class="n">matrix_init_user</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="n">steno_set_mode</span><span class="p">(</span><span class="n">STENO_MODE_GEMINI</span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div></div>
 
@@ -759,10 +759,10 @@ steno-specific functionality in QMK:</p>
 
 <p><strong><code class="highlighter-rouge">qmk_firmware/keyboards/ergodox_ez/keymaps/default_steno/rules.mk</code></strong></p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>STENO_ENABLE <span class="o">=</span> yes
-VIRTSER_ENABLE <span class="o">=</span> yes
-FORCE_NKRO <span class="o">=</span> yes
-MOUSEKEY_ENABLE <span class="o">=</span> no
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>STENO_ENABLE <span class="o">=</span> <span class="nb">yes
+</span>VIRTSER_ENABLE <span class="o">=</span> <span class="nb">yes
+</span>FORCE_NKRO <span class="o">=</span> <span class="nb">yes
+</span>MOUSEKEY_ENABLE <span class="o">=</span> no
 </code></pre></div></div>
 
 <p>Some notes about these changes:</p>

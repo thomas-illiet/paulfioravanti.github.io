@@ -479,12 +479,12 @@ easily shared between the different API calls coming from Elm:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Commands.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">contactsApiUrl</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">contactsApiUrl</span><span class="p">)</span>
 
 
-<span class="n">contactsApiUrl</span> <span class="o">:</span> <span class="kt">String</span>
+<span class="n">contactsApiUrl</span> <span class="p">:</span> <span class="kt">String</span>
 <span class="n">contactsApiUrl</span> <span class="o">=</span>
-    <span class="s">"/api/v1/contacts"</span>
+    <span class="s">"</span><span class="s2">/api/v1/contacts"</span>
 </code></pre></div></div>
 
 <p>The two main models in the Elm app are <a href="https://github.com/paulfioravanti/phoenix-and-elm/blob/rest/assets/elm/src/Contact/Model.elm"><code class="highlighter-rouge">Contact</code></a> and
@@ -498,21 +498,21 @@ information to fill the <a href="http://elm-lang.org/docs/records">records</a> o
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/Commands.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Contact.Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">fetchContact</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">fetchContact</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">contactsApiUrl</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Contact.Decoder</span> <span class="k">as</span> <span class="n">Decoder</span>
-<span class="kr">import</span> <span class="nn">Contact.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Http</span>
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">contactsApiUrl</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Decoder</span> <span class="k">as</span> <span class="kt">Decoder</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Http</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="p">))</span>
 
 
-<span class="n">fetchContact</span> <span class="o">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
+<span class="n">fetchContact</span> <span class="p">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
 <span class="n">fetchContact</span> <span class="n">id</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">apiUrl</span> <span class="o">=</span>
-            <span class="n">contactsApiUrl</span> <span class="o">++</span> <span class="s">"/"</span> <span class="o">++</span> <span class="n">toString</span> <span class="n">id</span>
-    <span class="kr">in</span>
+            <span class="n">contactsApiUrl</span> <span class="o">++</span> <span class="s">"</span><span class="s2">/"</span> <span class="o">++</span> <span class="n">toString</span> <span class="n">id</span>
+    <span class="k">in</span>
         <span class="kt">Decoder</span><span class="o">.</span><span class="n">decoder</span>
             <span class="o">|&gt;</span> <span class="kt">Http</span><span class="o">.</span><span class="n">get</span> <span class="n">apiUrl</span>
             <span class="o">|&gt;</span> <span class="kt">Http</span><span class="o">.</span><span class="n">send</span> <span class="kt">FetchContact</span>
@@ -528,27 +528,27 @@ it to send a request to the <code class="highlighter-rouge">apiUrl</code> (looki
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/Decoder.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Contact.Decoder</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">decoder</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Decoder</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">decoder</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Contact.Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Contact</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Json.Decode</span> <span class="k">as</span> <span class="n">Decode</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">int</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Json.Decode.Extra</span> <span class="n">exposing</span> <span class="p">((</span><span class="o">|:</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Contact</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Json</span><span class="o">.</span><span class="kt">Decode</span> <span class="k">as</span> <span class="kt">Decode</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">field</span><span class="o">,</span> <span class="n">int</span><span class="o">,</span> <span class="n">string</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Json</span><span class="o">.</span><span class="kt">Decode</span><span class="o">.</span><span class="kt">Extra</span> <span class="k">exposing</span> <span class="p">((</span><span class="o">|</span><span class="p">:))</span>
 
 
-<span class="n">decoder</span> <span class="o">:</span> <span class="kt">Decode</span><span class="o">.</span><span class="kt">Decoder</span> <span class="kt">Contact</span>
+<span class="n">decoder</span> <span class="p">:</span> <span class="kt">Decode</span><span class="o">.</span><span class="kt">Decoder</span> <span class="kt">Contact</span>
 <span class="n">decoder</span> <span class="o">=</span>
     <span class="kt">Decode</span><span class="o">.</span><span class="n">succeed</span>
         <span class="kt">Contact</span>
-        <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"id"</span> <span class="n">int</span><span class="p">)</span>
-        <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"first_name"</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"last_name"</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"gender"</span> <span class="n">int</span><span class="p">)</span>
-        <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"birth_date"</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"location"</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"phone_number"</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"email"</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"headline"</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"picture"</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">id"</span> <span class="n">int</span><span class="p">)</span>
+        <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">first_name"</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">last_name"</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">gender"</span> <span class="n">int</span><span class="p">)</span>
+        <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">birth_date"</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">location"</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">phone_number"</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">email"</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">headline"</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">picture"</span> <span class="n">string</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">ContactMsg FetchContact</code> message gets handled in <code class="highlighter-rouge">Contact.Update</code>, which
@@ -556,21 +556,21 @@ updates the <code class="highlighter-rouge">Contact</code> model record:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/Update.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Contact.Update</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Update</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Contact.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">,</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">Failure</span><span class="p">,</span> <span class="kt">Success</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="o">,</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">Failure</span><span class="o">,</span> <span class="kt">Success</span><span class="p">))</span>
 
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">ContactMsg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">ContactMsg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="kt">FetchContact</span> <span class="p">(</span><span class="kt">Ok</span> <span class="n">response</span><span class="p">)</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="kt">Success</span> <span class="n">response</span> <span class="p">},</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
+            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="kt">Success</span> <span class="n">response</span> <span class="p">}</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
 
-        <span class="kt">FetchContact</span> <span class="p">(</span><span class="kt">Err</span> <span class="ne">error</span><span class="p">)</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="kt">Failure</span> <span class="s">"Contact not found"</span> <span class="p">},</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
+        <span class="kt">FetchContact</span> <span class="p">(</span><span class="kt">Err</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span>
+            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="kt">Failure</span> <span class="s">"</span><span class="s2">Contact not found"</span> <span class="p">}</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
 </code></pre></div></div>
 
 <p>The use of <code class="highlighter-rouge">Cmd.map ContactMsg</code> in <code class="highlighter-rouge">Contact.Commands</code> is what enables the
@@ -578,17 +578,17 @@ updates the <code class="highlighter-rouge">Contact</code> model record:</p>
 case <code class="highlighter-rouge">Contact.Update</code> is considered a child of <code class="highlighter-rouge">Update</code>), which can help reduce
 the size of the “parent” <code class="highlighter-rouge">update</code> function:</p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Update</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="n">urlUpdate</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Update</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">update</span><span class="o">,</span> <span class="n">urlUpdate</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Contact.Update</span>
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="p">,</span> <span class="kt">ContactListMsg</span><span class="p">,</span> <span class="kt">NavigateTo</span><span class="p">,</span> <span class="o">...</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">,</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">NotRequested</span><span class="p">,</span> <span class="kt">Requesting</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Update</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="o">,</span> <span class="kt">ContactListMsg</span><span class="o">,</span> <span class="kt">NavigateTo</span><span class="o">,</span> <span class="o">...</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="o">,</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">NotRequested</span><span class="o">,</span> <span class="kt">Requesting</span><span class="p">))</span>
 <span class="c1">-- ...</span>
 
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="kt">ContactMsg</span> <span class="n">msg</span> <span class="o">-&gt;</span>
             <span class="kt">Contact</span><span class="o">.</span><span class="kt">Update</span><span class="o">.</span><span class="n">update</span> <span class="n">msg</span> <span class="n">model</span>
 
@@ -596,7 +596,7 @@ the size of the “parent” <code class="highlighter-rouge">update</code> funct
             <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Update</span><span class="o">.</span><span class="n">update</span> <span class="n">msg</span> <span class="n">model</span>
 
         <span class="kt">UpdateSearchQuery</span> <span class="n">value</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">search</span> <span class="o">=</span> <span class="n">value</span> <span class="p">},</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
+            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">search</span> <span class="o">=</span> <span class="n">value</span> <span class="p">}</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
 
         <span class="c1">-- ...</span>
 <span class="c1">-- ...</span>
@@ -618,25 +618,25 @@ what about fetching a list of contacts to populate a <code class="highlighter-ro
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/ContactList/Commands.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">ContactList.Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">fetchContactList</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">fetchContactList</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">contactsApiUrl</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">ContactList.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">(</span><span class="kt">FetchContactList</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">ContactList.Decoder</span> <span class="k">as</span> <span class="n">Decoder</span>
-<span class="kr">import</span> <span class="nn">Http</span>
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">contactsApiUrl</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">(</span><span class="kt">FetchContactList</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Decoder</span> <span class="k">as</span> <span class="kt">Decoder</span>
+<span class="k">import</span> <span class="kt">Http</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">))</span>
 
 
-<span class="n">fetchContactList</span> <span class="o">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
+<span class="n">fetchContactList</span> <span class="p">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
 <span class="n">fetchContactList</span> <span class="n">page</span> <span class="n">search</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">apiUrl</span> <span class="o">=</span>
             <span class="n">contactsApiUrl</span>
-                <span class="o">++</span> <span class="s">"?search="</span>
+                <span class="o">++</span> <span class="s">"</span><span class="s2">?search="</span>
                 <span class="o">++</span> <span class="n">search</span>
-                <span class="o">++</span> <span class="s">"&amp;page="</span>
+                <span class="o">++</span> <span class="s">"</span><span class="s2">&amp;page="</span>
                 <span class="o">++</span> <span class="p">(</span><span class="n">toString</span> <span class="n">page</span><span class="p">)</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="kt">Decoder</span><span class="o">.</span><span class="n">decoder</span>
             <span class="o">|&gt;</span> <span class="kt">Http</span><span class="o">.</span><span class="n">get</span> <span class="n">apiUrl</span>
             <span class="o">|&gt;</span> <span class="kt">Http</span><span class="o">.</span><span class="n">send</span> <span class="kt">FetchContactList</span>
@@ -659,26 +659,26 @@ of records:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/ContactList/Decoder.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">ContactList.Decoder</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">decoder</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Decoder</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">decoder</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Contact.Decoder</span>
-<span class="kr">import</span> <span class="nn">ContactList.Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactList</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Json.Decode</span> <span class="k">as</span> <span class="n">Decode</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">int</span><span class="p">,</span> <span class="n">list</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Json.Decode.Extra</span> <span class="n">exposing</span> <span class="p">((</span><span class="o">|:</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Decoder</span>
+<span class="k">import</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactList</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Json</span><span class="o">.</span><span class="kt">Decode</span> <span class="k">as</span> <span class="kt">Decode</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">field</span><span class="o">,</span> <span class="n">int</span><span class="o">,</span> <span class="n">list</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Json</span><span class="o">.</span><span class="kt">Decode</span><span class="o">.</span><span class="kt">Extra</span> <span class="k">exposing</span> <span class="p">((</span><span class="o">|</span><span class="p">:))</span>
 
 
-<span class="n">decoder</span> <span class="o">:</span> <span class="kt">Decode</span><span class="o">.</span><span class="kt">Decoder</span> <span class="kt">ContactList</span>
+<span class="n">decoder</span> <span class="p">:</span> <span class="kt">Decode</span><span class="o">.</span><span class="kt">Decoder</span> <span class="kt">ContactList</span>
 <span class="n">decoder</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">contact</span> <span class="o">=</span>
             <span class="kt">Contact</span><span class="o">.</span><span class="kt">Decoder</span><span class="o">.</span><span class="n">decoder</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="kt">Decode</span><span class="o">.</span><span class="n">succeed</span>
             <span class="kt">ContactList</span>
-            <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"entries"</span> <span class="p">(</span><span class="n">list</span> <span class="n">contact</span><span class="p">))</span>
-            <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"page_number"</span> <span class="n">int</span><span class="p">)</span>
-            <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"total_entries"</span> <span class="n">int</span><span class="p">)</span>
-            <span class="o">|:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"total_pages"</span> <span class="n">int</span><span class="p">)</span>
+            <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">entries"</span> <span class="p">(</span><span class="n">list</span> <span class="n">contact</span><span class="p">))</span>
+            <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">page_number"</span> <span class="n">int</span><span class="p">)</span>
+            <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">total_entries"</span> <span class="n">int</span><span class="p">)</span>
+            <span class="o">|</span><span class="p">:</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">total_pages"</span> <span class="n">int</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>The reason that the <code class="highlighter-rouge">field</code> for a list of contacts is specifically named
@@ -961,7 +961,7 @@ from controllers to resolvers is complete, it is safe to delete
 we will use <a href="https://github.com/jamesmacaulay/elm-graphql"><code class="highlighter-rouge">elm-graphql</code></a>. Let’s install it directly in the Elm app:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>assets/elm
-elm-package install jamesmacaulay/elm-graphql
+elm-package <span class="nb">install </span>jamesmacaulay/elm-graphql
 </code></pre></div></div>
 
 <p>Now, since the Phoenix-side API URL has changed, the first thing we need to do
@@ -969,12 +969,12 @@ is make our easiest edit, and tell Elm the new location to send requests to:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Commands.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">apiUrl</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">apiUrl</span><span class="p">)</span>
 
 
-<span class="n">apiUrl</span> <span class="o">:</span> <span class="kt">String</span>
+<span class="n">apiUrl</span> <span class="p">:</span> <span class="kt">String</span>
 <span class="n">apiUrl</span> <span class="o">=</span>
-    <span class="s">"/api"</span>
+    <span class="s">"</span><span class="s2">/api"</span>
 </code></pre></div></div>
 
 <h3 id="contact-via-graphql">Contact via GraphQL</h3>
@@ -985,17 +985,17 @@ requests:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/Commands.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Contact.Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">fetchContact</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">fetchContact</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">apiUrl</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Contact.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Contact.Request</span> <span class="k">as</span> <span class="n">Request</span>
-<span class="kr">import</span> <span class="nn">GraphQL.Client.Http</span> <span class="k">as</span> <span class="n">Http</span>
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Task</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Task</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">apiUrl</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Request</span> <span class="k">as</span> <span class="kt">Request</span>
+<span class="k">import</span> <span class="kt">GraphQL</span><span class="o">.</span><span class="kt">Client</span><span class="o">.</span><span class="kt">Http</span> <span class="k">as</span> <span class="kt">Http</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Task</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Task</span><span class="p">)</span>
 
 
-<span class="n">fetchContact</span> <span class="o">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
+<span class="n">fetchContact</span> <span class="p">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
 <span class="n">fetchContact</span> <span class="n">id</span> <span class="o">=</span>
     <span class="n">id</span>
         <span class="o">|&gt;</span> <span class="kt">Request</span><span class="o">.</span><span class="n">fetchContact</span>
@@ -1023,25 +1023,25 @@ our bearings):</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/Request.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Contact.Request</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">fetchContact</span><span class="p">,</span> <span class="n">contactSpec</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Request</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">fetchContact</span><span class="o">,</span> <span class="n">contactSpec</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Contact.Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Contact</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">GraphQL.Request.Builder</span> <span class="k">as</span> <span class="n">Builder</span>
-    <span class="n">exposing</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Contact</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">GraphQL</span><span class="o">.</span><span class="kt">Request</span><span class="o">.</span><span class="kt">Builder</span> <span class="k">as</span> <span class="kt">Builder</span>
+    <span class="k">exposing</span>
         <span class="p">(</span> <span class="kt">Document</span>
-        <span class="p">,</span> <span class="kt">NonNull</span>
-        <span class="p">,</span> <span class="kt">ObjectType</span>
-        <span class="p">,</span> <span class="kt">Query</span>
-        <span class="p">,</span> <span class="kt">Request</span>
-        <span class="p">,</span> <span class="kt">ValueSpec</span>
-        <span class="p">,</span> <span class="n">field</span>
-        <span class="p">,</span> <span class="n">int</span>
-        <span class="p">,</span> <span class="n">object</span>
-        <span class="p">,</span> <span class="n">string</span>
-        <span class="p">,</span> <span class="n">with</span>
+        <span class="o">,</span> <span class="kt">NonNull</span>
+        <span class="o">,</span> <span class="kt">ObjectType</span>
+        <span class="o">,</span> <span class="kt">Query</span>
+        <span class="o">,</span> <span class="kt">Request</span>
+        <span class="o">,</span> <span class="kt">ValueSpec</span>
+        <span class="o">,</span> <span class="n">field</span>
+        <span class="o">,</span> <span class="n">int</span>
+        <span class="o">,</span> <span class="n">object</span>
+        <span class="o">,</span> <span class="n">string</span>
+        <span class="o">,</span> <span class="n">with</span>
         <span class="p">)</span>
-<span class="kr">import</span> <span class="nn">GraphQL.Request.Builder.Arg</span> <span class="k">as</span> <span class="n">Arg</span>
-<span class="kr">import</span> <span class="nn">GraphQL.Request.Builder.Variable</span> <span class="k">as</span> <span class="n">Var</span>
+<span class="k">import</span> <span class="kt">GraphQL</span><span class="o">.</span><span class="kt">Request</span><span class="o">.</span><span class="kt">Builder</span><span class="o">.</span><span class="kt">Arg</span> <span class="k">as</span> <span class="kt">Arg</span>
+<span class="k">import</span> <span class="kt">GraphQL</span><span class="o">.</span><span class="kt">Request</span><span class="o">.</span><span class="kt">Builder</span><span class="o">.</span><span class="kt">Variable</span> <span class="k">as</span> <span class="kt">Var</span>
 
 
 <span class="cm">{-|
@@ -1060,42 +1060,42 @@ query($contactID: ID!) {
   }
 }
 -}</span>
-<span class="n">fetchContact</span> <span class="o">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Request</span> <span class="kt">Query</span> <span class="kt">Contact</span>
+<span class="n">fetchContact</span> <span class="p">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Request</span> <span class="kt">Query</span> <span class="kt">Contact</span>
 <span class="n">fetchContact</span> <span class="n">id</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">contactID</span> <span class="o">=</span>
-            <span class="kt">Arg</span><span class="o">.</span><span class="n">variable</span> <span class="p">(</span><span class="kt">Var</span><span class="o">.</span><span class="n">required</span> <span class="s">"contactID"</span> <span class="o">.</span><span class="n">contactID</span> <span class="kt">Var</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+            <span class="kt">Arg</span><span class="o">.</span><span class="n">variable</span> <span class="p">(</span><span class="kt">Var</span><span class="o">.</span><span class="n">required</span> <span class="s">"</span><span class="s2">contactID"</span> <span class="o">.</span><span class="n">contactID</span> <span class="kt">Var</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
 
         <span class="n">contactField</span> <span class="o">=</span>
             <span class="kt">Builder</span><span class="o">.</span><span class="n">extract</span>
                 <span class="p">(</span><span class="n">field</span>
-                    <span class="s">"contact"</span>
-                    <span class="p">[</span> <span class="p">(</span> <span class="s">"id"</span><span class="p">,</span> <span class="n">contactID</span> <span class="p">)</span> <span class="p">]</span>
+                    <span class="s">"</span><span class="s2">contact"</span>
+                    <span class="p">[</span> <span class="p">(</span> <span class="s">"</span><span class="s2">id"</span><span class="o">,</span> <span class="n">contactID</span> <span class="p">)</span> <span class="p">]</span>
                     <span class="n">contactSpec</span>
                 <span class="p">)</span>
 
         <span class="n">params</span> <span class="o">=</span>
             <span class="p">{</span> <span class="n">contactID</span> <span class="o">=</span> <span class="n">id</span> <span class="p">}</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">contactField</span>
             <span class="o">|&gt;</span> <span class="kt">Builder</span><span class="o">.</span><span class="n">queryDocument</span>
             <span class="o">|&gt;</span> <span class="kt">Builder</span><span class="o">.</span><span class="n">request</span> <span class="n">params</span>
 
 
-<span class="n">contactSpec</span> <span class="o">:</span> <span class="kt">ValueSpec</span> <span class="kt">NonNull</span> <span class="kt">ObjectType</span> <span class="kt">Contact</span> <span class="n">vars</span>
+<span class="n">contactSpec</span> <span class="p">:</span> <span class="kt">ValueSpec</span> <span class="kt">NonNull</span> <span class="kt">ObjectType</span> <span class="kt">Contact</span> <span class="n">vars</span>
 <span class="n">contactSpec</span> <span class="o">=</span>
     <span class="kt">Contact</span>
         <span class="o">|&gt;</span> <span class="n">object</span>
-        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"id"</span> <span class="kt">[]</span> <span class="n">int</span><span class="p">)</span>
-        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"firstName"</span> <span class="kt">[]</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"lastName"</span> <span class="kt">[]</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"gender"</span> <span class="kt">[]</span> <span class="n">int</span><span class="p">)</span>
-        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"birthDate"</span> <span class="kt">[]</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"location"</span> <span class="kt">[]</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"phoneNumber"</span> <span class="kt">[]</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"email"</span> <span class="kt">[]</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"headline"</span> <span class="kt">[]</span> <span class="n">string</span><span class="p">)</span>
-        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"picture"</span> <span class="kt">[]</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">id"</span> <span class="p">[]</span> <span class="n">int</span><span class="p">)</span>
+        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">firstName"</span> <span class="p">[]</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">lastName"</span> <span class="p">[]</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">gender"</span> <span class="p">[]</span> <span class="n">int</span><span class="p">)</span>
+        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">birthDate"</span> <span class="p">[]</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">location"</span> <span class="p">[]</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">phoneNumber"</span> <span class="p">[]</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">email"</span> <span class="p">[]</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">headline"</span> <span class="p">[]</span> <span class="n">string</span><span class="p">)</span>
+        <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">picture"</span> <span class="p">[]</span> <span class="n">string</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>The content of the <code class="highlighter-rouge">contactSpec</code> function pretty much lines up logically with
@@ -1114,13 +1114,13 @@ which has been referencing the <a href="https://github.com/elm-lang/http"><code 
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/Messages.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Contact.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
 
-<span class="kr">import</span> <span class="nn">Contact.Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Contact</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">GraphQL.Client.Http</span> <span class="k">as</span> <span class="n">Http</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Contact</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">GraphQL</span><span class="o">.</span><span class="kt">Client</span><span class="o">.</span><span class="kt">Http</span> <span class="k">as</span> <span class="kt">Http</span>
 
 
-<span class="kr">type</span> <span class="kt">ContactMsg</span>
+<span class="k">type</span> <span class="kt">ContactMsg</span>
     <span class="o">=</span> <span class="kt">FetchContact</span> <span class="p">(</span><span class="kt">Result</span> <span class="kt">Http</span><span class="o">.</span><span class="kt">Error</span> <span class="kt">Contact</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1143,17 +1143,17 @@ so let’s briskly get through how the files will change:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/ContactList/Commands.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">ContactList.Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">fetchContactList</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">fetchContactList</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">apiUrl</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">ContactList.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">(</span><span class="kt">FetchContactList</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">ContactList.Request</span> <span class="k">as</span> <span class="n">Request</span>
-<span class="kr">import</span> <span class="nn">GraphQL.Client.Http</span> <span class="k">as</span> <span class="n">Http</span>
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Task</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Task</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">apiUrl</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">(</span><span class="kt">FetchContactList</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Request</span> <span class="k">as</span> <span class="kt">Request</span>
+<span class="k">import</span> <span class="kt">GraphQL</span><span class="o">.</span><span class="kt">Client</span><span class="o">.</span><span class="kt">Http</span> <span class="k">as</span> <span class="kt">Http</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Task</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Task</span><span class="p">)</span>
 
 
-<span class="n">fetchContactList</span> <span class="o">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
+<span class="n">fetchContactList</span> <span class="p">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
 <span class="n">fetchContactList</span> <span class="n">pageNumber</span> <span class="n">search</span> <span class="o">=</span>
     <span class="n">search</span>
         <span class="o">|&gt;</span> <span class="kt">Request</span><span class="o">.</span><span class="n">fetchContactList</span> <span class="n">pageNumber</span>
@@ -1164,13 +1164,13 @@ so let’s briskly get through how the files will change:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/ContactList/Messages.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">ContactList.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
 
-<span class="kr">import</span> <span class="nn">ContactList.Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactList</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">GraphQL.Client.Http</span> <span class="k">as</span> <span class="n">Http</span>
+<span class="k">import</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactList</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">GraphQL</span><span class="o">.</span><span class="kt">Client</span><span class="o">.</span><span class="kt">Http</span> <span class="k">as</span> <span class="kt">Http</span>
 
 
-<span class="kr">type</span> <span class="kt">ContactListMsg</span>
+<span class="k">type</span> <span class="kt">ContactListMsg</span>
     <span class="o">=</span> <span class="kt">FetchContactList</span> <span class="p">(</span><span class="kt">Result</span> <span class="kt">Http</span><span class="o">.</span><span class="kt">Error</span> <span class="kt">ContactList</span><span class="p">)</span>
     <span class="o">|</span> <span class="kt">Paginate</span> <span class="kt">Int</span>
     <span class="o">|</span> <span class="kt">ResetSearch</span>
@@ -1179,25 +1179,25 @@ so let’s briskly get through how the files will change:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/ContactList/Request.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">ContactList.Request</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">fetchContactList</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Request</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">fetchContactList</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Contact.Request</span>
-<span class="kr">import</span> <span class="nn">ContactList.Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactList</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">GraphQL.Request.Builder</span> <span class="k">as</span> <span class="n">Builder</span>
-    <span class="n">exposing</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Request</span>
+<span class="k">import</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactList</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">GraphQL</span><span class="o">.</span><span class="kt">Request</span><span class="o">.</span><span class="kt">Builder</span> <span class="k">as</span> <span class="kt">Builder</span>
+    <span class="k">exposing</span>
         <span class="p">(</span> <span class="kt">NonNull</span>
-        <span class="p">,</span> <span class="kt">ObjectType</span>
-        <span class="p">,</span> <span class="kt">Query</span>
-        <span class="p">,</span> <span class="kt">Request</span>
-        <span class="p">,</span> <span class="kt">ValueSpec</span>
-        <span class="p">,</span> <span class="n">field</span>
-        <span class="p">,</span> <span class="n">int</span>
-        <span class="p">,</span> <span class="n">list</span>
-        <span class="p">,</span> <span class="n">object</span>
-        <span class="p">,</span> <span class="n">with</span>
+        <span class="o">,</span> <span class="kt">ObjectType</span>
+        <span class="o">,</span> <span class="kt">Query</span>
+        <span class="o">,</span> <span class="kt">Request</span>
+        <span class="o">,</span> <span class="kt">ValueSpec</span>
+        <span class="o">,</span> <span class="n">field</span>
+        <span class="o">,</span> <span class="n">int</span>
+        <span class="o">,</span> <span class="n">list</span>
+        <span class="o">,</span> <span class="n">object</span>
+        <span class="o">,</span> <span class="n">with</span>
         <span class="p">)</span>
-<span class="kr">import</span> <span class="nn">GraphQL.Request.Builder.Arg</span> <span class="k">as</span> <span class="n">Arg</span>
-<span class="kr">import</span> <span class="nn">GraphQL.Request.Builder.Variable</span> <span class="k">as</span> <span class="n">Var</span>
+<span class="k">import</span> <span class="kt">GraphQL</span><span class="o">.</span><span class="kt">Request</span><span class="o">.</span><span class="kt">Builder</span><span class="o">.</span><span class="kt">Arg</span> <span class="k">as</span> <span class="kt">Arg</span>
+<span class="k">import</span> <span class="kt">GraphQL</span><span class="o">.</span><span class="kt">Request</span><span class="o">.</span><span class="kt">Builder</span><span class="o">.</span><span class="kt">Variable</span> <span class="k">as</span> <span class="kt">Var</span>
 
 
 <span class="cm">{-|
@@ -1221,45 +1221,45 @@ query($searchQuery: String!, $pageNumber: Int!) {
   }
 }
 -}</span>
-<span class="n">fetchContactList</span> <span class="o">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Request</span> <span class="kt">Query</span> <span class="kt">ContactList</span>
+<span class="n">fetchContactList</span> <span class="p">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Request</span> <span class="kt">Query</span> <span class="kt">ContactList</span>
 <span class="n">fetchContactList</span> <span class="n">page</span> <span class="n">search</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">searchQuery</span> <span class="o">=</span>
-            <span class="kt">Arg</span><span class="o">.</span><span class="n">variable</span> <span class="p">(</span><span class="kt">Var</span><span class="o">.</span><span class="n">required</span> <span class="s">"searchQuery"</span> <span class="o">.</span><span class="n">searchQuery</span> <span class="kt">Var</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+            <span class="kt">Arg</span><span class="o">.</span><span class="n">variable</span> <span class="p">(</span><span class="kt">Var</span><span class="o">.</span><span class="n">required</span> <span class="s">"</span><span class="s2">searchQuery"</span> <span class="o">.</span><span class="n">searchQuery</span> <span class="kt">Var</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
 
         <span class="n">pageNumber</span> <span class="o">=</span>
-            <span class="kt">Arg</span><span class="o">.</span><span class="n">variable</span> <span class="p">(</span><span class="kt">Var</span><span class="o">.</span><span class="n">required</span> <span class="s">"pageNumber"</span> <span class="o">.</span><span class="n">pageNumber</span> <span class="kt">Var</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+            <span class="kt">Arg</span><span class="o">.</span><span class="n">variable</span> <span class="p">(</span><span class="kt">Var</span><span class="o">.</span><span class="n">required</span> <span class="s">"</span><span class="s2">pageNumber"</span> <span class="o">.</span><span class="n">pageNumber</span> <span class="kt">Var</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
 
         <span class="n">contactsField</span> <span class="o">=</span>
             <span class="kt">Builder</span><span class="o">.</span><span class="n">extract</span>
                 <span class="p">(</span><span class="n">field</span>
-                    <span class="s">"contacts"</span>
-                    <span class="p">[</span> <span class="p">(</span> <span class="s">"search"</span><span class="p">,</span> <span class="n">searchQuery</span> <span class="p">),</span> <span class="p">(</span> <span class="s">"page"</span><span class="p">,</span> <span class="n">pageNumber</span> <span class="p">)</span> <span class="p">]</span>
+                    <span class="s">"</span><span class="s2">contacts"</span>
+                    <span class="p">[</span> <span class="p">(</span> <span class="s">"</span><span class="s2">search"</span><span class="o">,</span> <span class="n">searchQuery</span> <span class="p">)</span><span class="o">,</span> <span class="p">(</span> <span class="s">"</span><span class="s2">page"</span><span class="o">,</span> <span class="n">pageNumber</span> <span class="p">)</span> <span class="p">]</span>
                     <span class="n">contactListSpec</span>
                 <span class="p">)</span>
 
         <span class="n">params</span> <span class="o">=</span>
             <span class="p">{</span> <span class="n">searchQuery</span> <span class="o">=</span> <span class="n">search</span>
-            <span class="p">,</span> <span class="n">pageNumber</span> <span class="o">=</span> <span class="n">page</span>
+            <span class="o">,</span> <span class="n">pageNumber</span> <span class="o">=</span> <span class="n">page</span>
             <span class="p">}</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="n">contactsField</span>
             <span class="o">|&gt;</span> <span class="kt">Builder</span><span class="o">.</span><span class="n">queryDocument</span>
             <span class="o">|&gt;</span> <span class="kt">Builder</span><span class="o">.</span><span class="n">request</span> <span class="n">params</span>
 
 
-<span class="n">contactListSpec</span> <span class="o">:</span> <span class="kt">ValueSpec</span> <span class="kt">NonNull</span> <span class="kt">ObjectType</span> <span class="kt">ContactList</span> <span class="n">vars</span>
+<span class="n">contactListSpec</span> <span class="p">:</span> <span class="kt">ValueSpec</span> <span class="kt">NonNull</span> <span class="kt">ObjectType</span> <span class="kt">ContactList</span> <span class="n">vars</span>
 <span class="n">contactListSpec</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">contact</span> <span class="o">=</span>
             <span class="kt">Contact</span><span class="o">.</span><span class="kt">Request</span><span class="o">.</span><span class="n">contactSpec</span>
-    <span class="kr">in</span>
+    <span class="k">in</span>
         <span class="kt">ContactList</span>
             <span class="o">|&gt;</span> <span class="n">object</span>
-            <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"entries"</span> <span class="kt">[]</span> <span class="p">(</span><span class="n">list</span> <span class="n">contact</span><span class="p">))</span>
-            <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"pageNumber"</span> <span class="kt">[]</span> <span class="n">int</span><span class="p">)</span>
-            <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"totalEntries"</span> <span class="kt">[]</span> <span class="n">int</span><span class="p">)</span>
-            <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"totalPages"</span> <span class="kt">[]</span> <span class="n">int</span><span class="p">)</span>
+            <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">entries"</span> <span class="p">[]</span> <span class="p">(</span><span class="n">list</span> <span class="n">contact</span><span class="p">))</span>
+            <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">pageNumber"</span> <span class="p">[]</span> <span class="n">int</span><span class="p">)</span>
+            <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">totalEntries"</span> <span class="p">[]</span> <span class="n">int</span><span class="p">)</span>
+            <span class="o">|&gt;</span> <span class="n">with</span> <span class="p">(</span><span class="n">field</span> <span class="s">"</span><span class="s2">totalPages"</span> <span class="p">[]</span> <span class="n">int</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Pretty similar set of changes, right?  The only real differences are the number

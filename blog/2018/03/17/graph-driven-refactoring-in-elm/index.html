@@ -388,15 +388,15 @@ of the update would be immediately delegated out to <code class="highlighter-rou
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Update.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Update</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Update</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">update</span><span class="o">,</span> <span class="o">...</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="p">,</span> <span class="o">...</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="o">,</span> <span class="o">...</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="o">,</span> <span class="o">...</span><span class="p">)</span>
 <span class="c1">-- ...</span>
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="kt">ContactMsg</span> <span class="n">msg</span> <span class="o">-&gt;</span>
             <span class="kt">Contact</span><span class="o">.</span><span class="kt">Update</span><span class="o">.</span><span class="n">update</span> <span class="n">msg</span> <span class="n">model</span>
 
@@ -409,21 +409,21 @@ it was only <code class="highlighter-rouge">Contact.Update</code> that knew what
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/Update.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Contact.Update</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Update</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Contact.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">,</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">Failure</span><span class="p">,</span> <span class="kt">Success</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="o">,</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">Failure</span><span class="o">,</span> <span class="kt">Success</span><span class="p">))</span>
 
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">ContactMsg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">ContactMsg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="kt">FetchContact</span> <span class="p">(</span><span class="kt">Ok</span> <span class="n">response</span><span class="p">)</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="kt">Success</span> <span class="n">response</span> <span class="p">},</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
+            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="kt">Success</span> <span class="n">response</span> <span class="p">}</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
 
-        <span class="kt">FetchContact</span> <span class="p">(</span><span class="kt">Err</span> <span class="ne">error</span><span class="p">)</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="kt">Failure</span> <span class="s">"Contact not found"</span> <span class="p">},</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
+        <span class="kt">FetchContact</span> <span class="p">(</span><span class="kt">Err</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span>
+            <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="kt">Failure</span> <span class="s">"</span><span class="s2">Contact not found"</span> <span class="p">}</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
 </code></pre></div></div>
 
 <p>This sort of thing seemed like a good pattern to me in the absence of any
@@ -454,7 +454,7 @@ project, and make sure you have <a href="https://www.python.org/downloads/">Pyth
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>assets/elm
 wget https://raw.githubusercontent.com/justinmimbs/elm-module-graph/master/elm-module-graph.py
-chmod 744 elm-module-graph.py
+<span class="nb">chmod </span>744 elm-module-graph.py
 ./elm-module-graph.py src/Main.elm
 </code></pre></div></div>
 
@@ -515,10 +515,10 @@ Since <code class="highlighter-rouge">Contact</code> concern modules needs to kn
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/RemoteData.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">RemoteData</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">RemoteData</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">RemoteData</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">RemoteData</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
 
 
-<span class="kr">type</span> <span class="kt">RemoteData</span> <span class="n">e</span> <span class="n">a</span>
+<span class="k">type</span> <span class="kt">RemoteData</span> <span class="n">e</span> <span class="n">a</span>
     <span class="o">=</span> <span class="kt">Failure</span> <span class="n">e</span>
     <span class="o">|</span> <span class="kt">NotRequested</span>
     <span class="o">|</span> <span class="kt">Requesting</span>
@@ -529,19 +529,19 @@ Since <code class="highlighter-rouge">Contact</code> concern modules needs to kn
 <code class="highlighter-rouge">RemoteData</code> references to this new one, but most of the edits will consist of
 changing references like:</p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">import</span> <span class="nn">Model</span>
-    <span class="n">exposing</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="kt">Model</span>
+    <span class="k">exposing</span>
         <span class="p">(</span> <span class="kt">Model</span>
-        <span class="p">,</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">NotRequested</span><span class="p">,</span> <span class="kt">Requesting</span><span class="p">,</span> <span class="kt">Failure</span><span class="p">,</span> <span class="kt">Success</span><span class="p">)</span>
+        <span class="o">,</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">NotRequested</span><span class="o">,</span> <span class="kt">Requesting</span><span class="o">,</span> <span class="kt">Failure</span><span class="o">,</span> <span class="kt">Success</span><span class="p">)</span>
         <span class="p">)</span>
 </code></pre></div></div>
 
 <p>to something like:</p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">import</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">RemoteData</span>
-    <span class="n">exposing</span>
-        <span class="p">(</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">NotRequested</span><span class="p">,</span> <span class="kt">Requesting</span><span class="p">,</span> <span class="kt">Failure</span><span class="p">,</span> <span class="kt">Success</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">RemoteData</span>
+    <span class="k">exposing</span>
+        <span class="p">(</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">NotRequested</span><span class="o">,</span> <span class="kt">Requesting</span><span class="o">,</span> <span class="kt">Failure</span><span class="o">,</span> <span class="kt">Success</span><span class="p">)</span>
         <span class="p">)</span>
 </code></pre></div></div>
 
@@ -551,7 +551,7 @@ changing references like:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/View.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">NavigateTo</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">NavigateTo</span><span class="p">))</span>
 </code></pre></div></div>
 
 <p><code class="highlighter-rouge">NavigateTo</code> is a message that is sent in <code class="highlighter-rouge">onClick</code> link attributes in HTML
@@ -560,19 +560,19 @@ runs a command to navigate to a new URL, and does not return a new model:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Update.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Update</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Update</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">update</span><span class="o">,</span> <span class="o">...</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Navigation</span>
-<span class="kr">import</span> <span class="nn">Routing</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Route</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Navigation</span>
+<span class="k">import</span> <span class="kt">Routing</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Route</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>
 <span class="c1">-- ...</span>
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="c1">-- ...</span>
 
         <span class="kt">NavigateTo</span> <span class="n">route</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="n">model</span><span class="p">,</span> <span class="kt">Navigation</span><span class="o">.</span><span class="n">newUrl</span> <span class="p">(</span><span class="kt">Routing</span><span class="o">.</span><span class="n">toPath</span> <span class="n">route</span><span class="p">)</span> <span class="p">)</span>
+            <span class="p">(</span> <span class="n">model</span><span class="o">,</span> <span class="kt">Navigation</span><span class="o">.</span><span class="n">newUrl</span> <span class="p">(</span><span class="kt">Routing</span><span class="o">.</span><span class="n">toPath</span> <span class="n">route</span><span class="p">)</span> <span class="p">)</span>
 <span class="c1">-- ...</span>
 </code></pre></div></div>
 
@@ -582,27 +582,27 @@ messages and update handling for <code class="highlighter-rouge">Routing</code>:
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Routing/Messages.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Routing.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Routing</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
 
-<span class="kr">import</span> <span class="nn">Routing</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Route</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Routing</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Route</span><span class="p">)</span>
 
 
-<span class="kr">type</span> <span class="kt">RoutingMsg</span>
+<span class="k">type</span> <span class="kt">RoutingMsg</span>
     <span class="o">=</span> <span class="kt">NavigateTo</span> <span class="kt">Route</span>
 </code></pre></div></div>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Routing/Update.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Routing.Update</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Routing</span><span class="o">.</span><span class="kt">Update</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Navigation</span>
-<span class="kr">import</span> <span class="nn">Routing</span>
-<span class="kr">import</span> <span class="nn">Routing.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">(</span><span class="kt">NavigateTo</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Navigation</span>
+<span class="k">import</span> <span class="kt">Routing</span>
+<span class="k">import</span> <span class="kt">Routing</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">(</span><span class="kt">NavigateTo</span><span class="p">))</span>
 
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">RoutingMsg</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="n">msg</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">RoutingMsg</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="n">msg</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="kt">NavigateTo</span> <span class="n">route</span> <span class="o">-&gt;</span>
             <span class="kt">Navigation</span><span class="o">.</span><span class="n">newUrl</span> <span class="p">(</span><span class="kt">Routing</span><span class="o">.</span><span class="n">toPath</span> <span class="n">route</span><span class="p">)</span>
 </code></pre></div></div>
@@ -613,15 +613,15 @@ messages and update handling for <code class="highlighter-rouge">Routing</code>:
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Messages.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
 
-<span class="kr">import</span> <span class="nn">Contact.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">ContactList.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Navigation</span>
-<span class="kr">import</span> <span class="nn">Routing.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactListMsg</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Navigation</span>
+<span class="k">import</span> <span class="kt">Routing</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">)</span>
 
 
-<span class="kr">type</span> <span class="kt">Msg</span>
+<span class="k">type</span> <span class="kt">Msg</span>
     <span class="o">=</span> <span class="kt">ContactMsg</span> <span class="kt">ContactMsg</span>
     <span class="o">|</span> <span class="kt">ContactListMsg</span> <span class="kt">ContactListMsg</span>
     <span class="o">|</span> <span class="kt">RoutingMsg</span> <span class="kt">RoutingMsg</span>
@@ -631,19 +631,19 @@ messages and update handling for <code class="highlighter-rouge">Routing</code>:
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Update.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Update</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Update</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">update</span><span class="o">,</span> <span class="o">...</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Routing.Update</span>
+<span class="k">import</span> <span class="kt">Routing</span><span class="o">.</span><span class="kt">Update</span>
 <span class="c1">-- ...</span>
 
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="c1">-- ...</span>
 
         <span class="kt">RoutingMsg</span> <span class="n">msg</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="n">model</span><span class="p">,</span> <span class="kt">Routing</span><span class="o">.</span><span class="kt">Update</span><span class="o">.</span><span class="n">update</span> <span class="n">msg</span> <span class="p">)</span>
+            <span class="p">(</span> <span class="n">model</span><span class="o">,</span> <span class="kt">Routing</span><span class="o">.</span><span class="kt">Update</span><span class="o">.</span><span class="n">update</span> <span class="n">msg</span> <span class="p">)</span>
 <span class="c1">-- ...</span>
 </code></pre></div></div>
 
@@ -658,17 +658,17 @@ need to change.</p>
 <code class="highlighter-rouge">NavigateTo</code> references changed, but most of the edits will consist of changing
 references like:</p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">NavigateTo</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">NavigateTo</span><span class="p">))</span>
 </code></pre></div></div>
 
 <p>to something like:</p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">))</span>
 </code></pre></div></div>
 
 <p>or (depending on the file):</p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">import</span> <span class="nn">Routing.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">(</span><span class="kt">NavigateTo</span><span class="p">))</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="kt">Routing</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">(</span><span class="kt">NavigateTo</span><span class="p">))</span>
 </code></pre></div></div>
 
 <p>as well as changing function declarations to return a <code class="highlighter-rouge">RoutingMsg</code>, rather than
@@ -676,15 +676,15 @@ a <code class="highlighter-rouge">Msg</code>:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/View.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ...</span>
 
-<span class="kr">import</span> <span class="nn">Routing.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">(</span><span class="kt">NavigateTo</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Routing</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">(</span><span class="kt">NavigateTo</span><span class="p">))</span>
 <span class="c1">-- ...</span>
 
-<span class="n">view</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">RoutingMsg</span>
+<span class="n">view</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">RoutingMsg</span>
 <span class="c1">-- ...</span>
 
-<span class="n">showView</span> <span class="o">:</span> <span class="kt">Contact</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">Html</span> <span class="kt">RoutingMsg</span> <span class="p">)</span>
+<span class="n">showView</span> <span class="p">:</span> <span class="kt">Contact</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">String</span><span class="o">,</span> <span class="kt">Html</span> <span class="kt">RoutingMsg</span> <span class="p">)</span>
 <span class="c1">-- ...</span>
 
 <span class="c1">-- etc etc change Msg to RoutingMsg for all the functions in this file ...</span>
@@ -698,33 +698,33 @@ changed.</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/ContactList/View.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">ContactList.View</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">view</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">ContactList</span><span class="o">.</span><span class="kt">View</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">,</span> <span class="o">...</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">RoutingMsg</span><span class="o">,</span> <span class="o">...</span><span class="p">))</span>
 <span class="c1">-- ...</span>
 
-<span class="n">contactsList</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">ContactList</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">contactsList</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">ContactList</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">contactsList</span> <span class="n">model</span> <span class="n">page</span> <span class="o">=</span>
-    <span class="kr">if</span> <span class="n">page</span><span class="o">.</span><span class="n">totalEntries</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="kr">then</span>
+    <span class="k">if</span> <span class="n">page</span><span class="o">.</span><span class="n">totalEntries</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">then</span>
         <span class="n">page</span><span class="o">.</span><span class="n">entries</span>
             <span class="o">|&gt;</span> <span class="kt">List</span><span class="o">.</span><span class="n">map</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">View</span><span class="o">.</span><span class="n">showView</span>
-            <span class="o">|&gt;</span> <span class="kt">Keyed</span><span class="o">.</span><span class="n">node</span> <span class="s">"div"</span> <span class="p">[</span> <span class="kr">class</span> <span class="s">"cards-wrapper"</span> <span class="p">]</span>
+            <span class="o">|&gt;</span> <span class="kt">Keyed</span><span class="o">.</span><span class="n">node</span> <span class="s">"</span><span class="s2">div"</span> <span class="p">[</span> <span class="n">class</span> <span class="s">"</span><span class="s2">cards-wrapper"</span> <span class="p">]</span>
             <span class="o">|&gt;</span> <span class="kt">Html</span><span class="o">.</span><span class="n">map</span> <span class="kt">RoutingMsg</span>
-    <span class="kr">else</span>
+    <span class="k">else</span>
       <span class="c1">-- ...</span>
 </code></pre></div></div>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/View.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">View</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">view</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">View</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">RoutingMsg</span><span class="p">))</span>
 <span class="c1">-- ...</span>
 
 
-<span class="n">page</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="n">page</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="kt">Msg</span>
 <span class="n">page</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">model</span><span class="o">.</span><span class="n">route</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">model</span><span class="o">.</span><span class="n">route</span> <span class="k">of</span>
         <span class="c1">-- ...</span>
 
         <span class="kt">ShowContactRoute</span> <span class="n">id</span> <span class="o">-&gt;</span>
@@ -734,8 +734,8 @@ changed.</p>
 
         <span class="kt">NotFoundRoute</span> <span class="o">-&gt;</span>
             <span class="kt">Shared</span><span class="o">.</span><span class="kt">View</span><span class="o">.</span><span class="n">warningMessage</span>
-                <span class="s">"fa fa-meh-o fa-stack-2x"</span>
-                <span class="s">"Page not found"</span>
+                <span class="s">"</span><span class="s2">fa fa-meh-o fa-stack-2x"</span>
+                <span class="s">"</span><span class="s2">Page not found"</span>
                 <span class="p">(</span><span class="kt">Html</span><span class="o">.</span><span class="n">map</span> <span class="kt">RoutingMsg</span> <span class="kt">Shared</span><span class="o">.</span><span class="kt">View</span><span class="o">.</span><span class="n">backToHomeLink</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -744,14 +744,14 @@ changed.</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Shared/View.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">warningMessage</span> <span class="o">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="n">msg</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="n">msg</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">warningMessage</span> <span class="p">:</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="n">msg</span> <span class="o">-&gt;</span> <span class="kt">Html</span> <span class="n">msg</span>
 <span class="n">warningMessage</span> <span class="n">iconClasses</span> <span class="n">message</span> <span class="n">content</span> <span class="o">=</span>
-    <span class="n">div</span> <span class="p">[</span> <span class="kr">class</span> <span class="s">"warning"</span> <span class="p">]</span>
-        <span class="p">[</span> <span class="n">span</span> <span class="p">[</span> <span class="kr">class</span> <span class="s">"fa-stack"</span> <span class="p">]</span>
-            <span class="p">[</span> <span class="n">i</span> <span class="p">[</span> <span class="kr">class</span> <span class="n">iconClasses</span> <span class="p">]</span> <span class="kt">[]</span> <span class="p">]</span>
-        <span class="p">,</span> <span class="n">h4</span> <span class="kt">[]</span>
+    <span class="n">div</span> <span class="p">[</span> <span class="n">class</span> <span class="s">"</span><span class="s2">warning"</span> <span class="p">]</span>
+        <span class="p">[</span> <span class="n">span</span> <span class="p">[</span> <span class="n">class</span> <span class="s">"</span><span class="s2">fa-stack"</span> <span class="p">]</span>
+            <span class="p">[</span> <span class="n">i</span> <span class="p">[</span> <span class="n">class</span> <span class="n">iconClasses</span> <span class="p">]</span> <span class="p">[]</span> <span class="p">]</span>
+        <span class="o">,</span> <span class="n">h4</span> <span class="p">[]</span>
             <span class="p">[</span> <span class="n">text</span> <span class="n">message</span> <span class="p">]</span>
-        <span class="p">,</span> <span class="n">content</span>
+        <span class="o">,</span> <span class="n">content</span>
         <span class="p">]</span>
 </code></pre></div></div>
 
@@ -785,21 +785,21 @@ when we receive a <code class="highlighter-rouge">ContactMsg</code>, and <code c
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Update.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Update</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Update</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">update</span><span class="o">,</span> <span class="o">...</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="p">,</span> <span class="o">...</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="o">,</span> <span class="o">...</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Model</span><span class="o">,</span> <span class="o">...</span><span class="p">)</span>
 <span class="c1">-- ...</span>
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">Msg</span> <span class="o">-&gt;</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="kt">ContactMsg</span> <span class="n">msg</span> <span class="o">-&gt;</span>
-            <span class="kr">let</span>
-                <span class="p">(</span> <span class="n">contact</span><span class="p">,</span> <span class="n">cmd</span> <span class="p">)</span> <span class="o">=</span>
+            <span class="k">let</span>
+                <span class="p">(</span> <span class="n">contact</span><span class="o">,</span> <span class="n">cmd</span> <span class="p">)</span> <span class="o">=</span>
                     <span class="kt">Contact</span><span class="o">.</span><span class="kt">Update</span><span class="o">.</span><span class="n">update</span> <span class="n">msg</span>
-            <span class="kr">in</span>
-                <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="n">contact</span> <span class="p">},</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">map</span> <span class="kt">ContactMsg</span> <span class="n">cmd</span> <span class="p">)</span>
+            <span class="k">in</span>
+                <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="n">contact</span> <span class="p">}</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">map</span> <span class="kt">ContactMsg</span> <span class="n">cmd</span> <span class="p">)</span>
 
 <span class="c1">-- ...</span>
 </code></pre></div></div>
@@ -810,21 +810,21 @@ wants:</p>
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/Update.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Contact.Update</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Update</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Contact.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Contact.Model</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Contact</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">RemoteData</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">RemoteData</span><span class="p">,</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">Failure</span><span class="p">,</span> <span class="kt">Success</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Model</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Contact</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">RemoteData</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">RemoteData</span><span class="o">,</span> <span class="kt">RemoteData</span><span class="p">(</span><span class="kt">Failure</span><span class="o">,</span> <span class="kt">Success</span><span class="p">))</span>
 
 
-<span class="n">update</span> <span class="o">:</span> <span class="kt">ContactMsg</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">RemoteData</span> <span class="kt">String</span> <span class="kt">Contact</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">ContactMsg</span> <span class="p">)</span>
+<span class="n">update</span> <span class="p">:</span> <span class="kt">ContactMsg</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">RemoteData</span> <span class="kt">String</span> <span class="kt">Contact</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">ContactMsg</span> <span class="p">)</span>
 <span class="n">update</span> <span class="n">msg</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">msg</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">of</span>
         <span class="kt">FetchContact</span> <span class="p">(</span><span class="kt">Ok</span> <span class="n">response</span><span class="p">)</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="kt">Success</span> <span class="n">response</span><span class="p">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
+            <span class="p">(</span> <span class="kt">Success</span> <span class="n">response</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
 
-        <span class="kt">FetchContact</span> <span class="p">(</span><span class="kt">Err</span> <span class="ne">error</span><span class="p">)</span> <span class="o">-&gt;</span>
-            <span class="p">(</span> <span class="kt">Failure</span> <span class="s">"Contact not found"</span><span class="p">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
+        <span class="kt">FetchContact</span> <span class="p">(</span><span class="kt">Err</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span>
+            <span class="p">(</span> <span class="kt">Failure</span> <span class="s">"</span><span class="s2">Contact not found"</span><span class="o">,</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">none</span> <span class="p">)</span>
 </code></pre></div></div>
 
 <h2 id="contactcommands-should-return-contactmsgs">Contact.Commands should return ContactMsgs</h2>
@@ -838,21 +838,21 @@ responsible for <code class="highlighter-rouge">Cmd.map</code>ping the <code cla
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/Commands.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Contact.Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">fetchContact</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">fetchContact</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">contactsApiUrl</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Contact.Decoder</span> <span class="k">as</span> <span class="n">Decoder</span>
-<span class="kr">import</span> <span class="nn">Contact.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Http</span>
-<span class="kr">import</span> <span class="nn">Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">contactsApiUrl</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Decoder</span> <span class="k">as</span> <span class="kt">Decoder</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Http</span>
+<span class="k">import</span> <span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">Msg</span><span class="p">(</span><span class="kt">ContactMsg</span><span class="p">))</span>
 
 
-<span class="n">fetchContact</span> <span class="o">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
+<span class="n">fetchContact</span> <span class="p">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">Msg</span>
 <span class="n">fetchContact</span> <span class="n">id</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">apiUrl</span> <span class="o">=</span>
-            <span class="n">contactsApiUrl</span> <span class="o">++</span> <span class="s">"/"</span> <span class="o">++</span> <span class="n">toString</span> <span class="n">id</span>
-    <span class="kr">in</span>
+            <span class="n">contactsApiUrl</span> <span class="o">++</span> <span class="s">"</span><span class="s2">/"</span> <span class="o">++</span> <span class="n">toString</span> <span class="n">id</span>
+    <span class="k">in</span>
         <span class="kt">Decoder</span><span class="o">.</span><span class="n">decoder</span>
             <span class="o">|&gt;</span> <span class="kt">Http</span><span class="o">.</span><span class="n">get</span> <span class="n">apiUrl</span>
             <span class="o">|&gt;</span> <span class="kt">Http</span><span class="o">.</span><span class="n">send</span> <span class="kt">FetchContact</span>
@@ -861,18 +861,18 @@ responsible for <code class="highlighter-rouge">Cmd.map</code>ping the <code cla
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Update.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Update</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="n">urlUpdate</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Update</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">update</span><span class="o">,</span> <span class="n">urlUpdate</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">urlUpdate</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">urlUpdate</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">urlUpdate</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">model</span><span class="o">.</span><span class="n">route</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">model</span><span class="o">.</span><span class="n">route</span> <span class="k">of</span>
         <span class="c1">-- ...</span>
 
         <span class="kt">ShowContactRoute</span> <span class="n">id</span> <span class="o">-&gt;</span>
             <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="kt">Requesting</span> <span class="p">}</span>
-            <span class="p">,</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Commands</span><span class="o">.</span><span class="n">fetchContact</span> <span class="n">id</span>
+            <span class="o">,</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Commands</span><span class="o">.</span><span class="n">fetchContact</span> <span class="n">id</span>
             <span class="p">)</span>
 
 <span class="c1">-- ...</span>
@@ -882,20 +882,20 @@ responsible for <code class="highlighter-rouge">Cmd.map</code>ping the <code cla
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Contact/Commands.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Contact.Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">fetchContact</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">fetchContact</span><span class="p">)</span>
 
-<span class="kr">import</span> <span class="nn">Commands</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">contactsApiUrl</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">Contact.Decoder</span> <span class="k">as</span> <span class="n">Decoder</span>
-<span class="kr">import</span> <span class="nn">Contact.Messages</span> <span class="n">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
-<span class="kr">import</span> <span class="nn">Http</span>
+<span class="k">import</span> <span class="kt">Commands</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">contactsApiUrl</span><span class="p">)</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Decoder</span> <span class="k">as</span> <span class="kt">Decoder</span>
+<span class="k">import</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Messages</span> <span class="k">exposing</span> <span class="p">(</span><span class="kt">ContactMsg</span><span class="p">(</span><span class="kt">FetchContact</span><span class="p">))</span>
+<span class="k">import</span> <span class="kt">Http</span>
 
 
-<span class="n">fetchContact</span> <span class="o">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">ContactMsg</span>
+<span class="n">fetchContact</span> <span class="p">:</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Cmd</span> <span class="kt">ContactMsg</span>
 <span class="n">fetchContact</span> <span class="n">id</span> <span class="o">=</span>
-    <span class="kr">let</span>
+    <span class="k">let</span>
         <span class="n">apiUrl</span> <span class="o">=</span>
-            <span class="n">contactsApiUrl</span> <span class="o">++</span> <span class="s">"/"</span> <span class="o">++</span> <span class="n">toString</span> <span class="n">id</span>
-    <span class="kr">in</span>
+            <span class="n">contactsApiUrl</span> <span class="o">++</span> <span class="s">"</span><span class="s2">/"</span> <span class="o">++</span> <span class="n">toString</span> <span class="n">id</span>
+    <span class="k">in</span>
         <span class="kt">Decoder</span><span class="o">.</span><span class="n">decoder</span>
             <span class="o">|&gt;</span> <span class="kt">Http</span><span class="o">.</span><span class="n">get</span> <span class="n">apiUrl</span>
             <span class="o">|&gt;</span> <span class="kt">Http</span><span class="o">.</span><span class="n">send</span> <span class="kt">FetchContact</span>
@@ -903,18 +903,18 @@ responsible for <code class="highlighter-rouge">Cmd.map</code>ping the <code cla
 
 <p><strong><code class="highlighter-rouge">assets/elm/src/Update.elm</code></strong></p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">module</span> <span class="nn">Update</span> <span class="n">exposing</span> <span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="n">urlUpdate</span><span class="p">)</span>
+<div class="language-elm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="kt">Update</span> <span class="k">exposing</span> <span class="p">(</span><span class="n">update</span><span class="o">,</span> <span class="n">urlUpdate</span><span class="p">)</span>
 
 <span class="c1">-- ...</span>
 
-<span class="n">urlUpdate</span> <span class="o">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="p">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
+<span class="n">urlUpdate</span> <span class="p">:</span> <span class="kt">Model</span> <span class="o">-&gt;</span> <span class="p">(</span> <span class="kt">Model</span><span class="o">,</span> <span class="kt">Cmd</span> <span class="kt">Msg</span> <span class="p">)</span>
 <span class="n">urlUpdate</span> <span class="n">model</span> <span class="o">=</span>
-    <span class="kr">case</span> <span class="n">model</span><span class="o">.</span><span class="n">route</span> <span class="kr">of</span>
+    <span class="k">case</span> <span class="n">model</span><span class="o">.</span><span class="n">route</span> <span class="k">of</span>
         <span class="c1">-- ...</span>
 
         <span class="kt">ShowContactRoute</span> <span class="n">id</span> <span class="o">-&gt;</span>
             <span class="p">(</span> <span class="p">{</span> <span class="n">model</span> <span class="o">|</span> <span class="n">contact</span> <span class="o">=</span> <span class="kt">Requesting</span> <span class="p">}</span>
-            <span class="p">,</span> <span class="n">id</span>
+            <span class="o">,</span> <span class="n">id</span>
                 <span class="o">|&gt;</span> <span class="kt">Contact</span><span class="o">.</span><span class="kt">Commands</span><span class="o">.</span><span class="n">fetchContact</span>
                 <span class="o">|&gt;</span> <span class="kt">Cmd</span><span class="o">.</span><span class="n">map</span> <span class="kt">ContactMsg</span>
 
